@@ -1,4 +1,3 @@
-// src/views/StoryPage.jsx
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -13,7 +12,6 @@ function StoryPage() {
   const [isMusicOn, setIsMusicOn] = useState(false);
 
   useEffect(() => {
-    // Fetch story data from JSON file
     fetch('/data.json')
       .then(response => response.json())
       .then(stories => {
@@ -23,7 +21,7 @@ function StoryPage() {
           setStoryNodes(story.nodes);
           const savedBookmark = localStorage.getItem(`bookmark-${storyId}`);
           setBookmark(savedBookmark);
-          setProgress(0); // Assume start from 0% progress
+          setProgress(0); 
         }
       });
   }, [storyId]);
@@ -31,7 +29,7 @@ function StoryPage() {
   const handleChoice = (nextNodeId) => {
     const nextNode = storyNodes.find(node => node.id === nextNodeId);
     setCurrentNode(nextNode);
-    setProgress(prevProgress => Math.min(prevProgress + 20, 100)); // Example increment
+    setProgress(prevProgress => Math.min(prevProgress + 20, 100)); 
   };
 
   const handleBookmark = () => {
@@ -47,7 +45,6 @@ function StoryPage() {
   
   return (
     <div className="container mt-5">
-      {/* Navigation Bar */}
       <nav className="navbar navbar-expand-lg navbar-light bg-light mb-4">
         <a className="navbar-brand" href="#">StoryApp</a>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -71,14 +68,12 @@ function StoryPage() {
         </div>
       </nav>
 
-      {/* Story Cover Image and Title */}
       <div className="text-center mb-4">
         <img src={currentNode ? currentNode.coverImage : 'https://via.placeholder.com/800x400?text=Loading...'} alt="Story Cover" className="img-fluid mb-3" />
         <h1>{currentNode ? currentNode.title : 'Loading...'}</h1>
         <h5>By {currentNode ? currentNode.author : 'Loading...'}</h5>
       </div>
 
-      {/* Reading Progress Bar */}
       <div className="mb-4">
         <div className="progress">
           <div
@@ -94,7 +89,6 @@ function StoryPage() {
         </div>
       </div>
 
-      {/* Interactive Choices */}
       {currentNode && (
         <div>
           <p>{currentNode.text}</p>
@@ -123,7 +117,6 @@ function StoryPage() {
       )}
 
 
-      {/* Return to Home Button */}
       <div className="mt-4">
         <Link to="/" className="btn btn-secondary">Return to Home</Link>
       </div>

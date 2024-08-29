@@ -6,7 +6,6 @@ import '../App.css';
 function Home() {
   const [searchQuery, setSearchQuery] = useState('');
 
-  // Assuming this list is a subset of the data in data.json
   const stories = [
     { id: 1, title: 'The Dark Forest', category: 'Fantasy' },
     { id: 2, title: 'The Treasure Hunt', category: 'Adventure' },
