@@ -29,7 +29,7 @@ function AboutPage() {
 
       <div className="row">
         <div className="col-md-6">
-          <h1 className="display-4 mb-4">About StoryApp</h1>
+          <h6 className="display-4 mb-4">About StoryApp</h6>
           <p className="lead">
             Welcome to StoryApp, a platform designed to immerse you in interactive storytelling experiences.
             Explore our diverse range of stories, each offering unique paths and adventures.
