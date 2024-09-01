@@ -1,10 +1,10 @@
-import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { Link } from 'react-router-dom';
+import React from 'react';  
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Link } from 'react-router-dom';  
 
-function AboutPage() {
-  return (
-    <div className="container mt-5">
+function AboutPage() {  
+  return (  
+    <div className="container mt-4">  
 
       <nav className="navbar navbar-expand-lg navbar-light bg-light mb-4">
         <a className="navbar-brand" href="#">StoryApp</a>
@@ -26,48 +26,43 @@ function AboutPage() {
           </ul>
         </div>
       </nav>
+      <div className="grid md:grid-cols-2 gap-8 mb-8">  
+        <div>  
+          <h2 className="text-3xl font-semibold text-gray-800 mb-4">About StoryApp</h2>  
+          <p className="text-gray-600 mb-4">  
+            Welcome to StoryApp, a platform designed to immerse you in interactive storytelling experiences.  
+            Explore our diverse range of stories, each offering unique paths and adventures.  
+          </p>  
+          <p className="text-gray-600">  
+            Our mission is to bring creativity and engagement to readers by offering interactive and  
+            dynamic storytelling experiences. Dive into our stories and see where your choices lead you!  
+          </p>  
+        </div>  
+        <div>  
+          <img   
+            src="https://via.placeholder.com/600x400?text=About+StoryApp"   
+            alt="About StoryApp"   
+            className="w-full rounded-lg shadow"  
+          />  
+        </div>  
+      </div>  
 
-      <div className="row">
-        <div className="col-md-6">
-          <h6 className="display-4 mb-4">About StoryApp</h6>
-          <p className="lead">
-            Welcome to StoryApp, a platform designed to immerse you in interactive storytelling experiences.
-            Explore our diverse range of stories, each offering unique paths and adventures.
-          </p>
-          <p>
-            Our mission is to bring creativity and engagement to readers by offering interactive and
-            dynamic storytelling experiences. Dive into our stories and see where your choices lead you!
-          </p>
-        </div>
-        <div className="col-md-6">
-          <img 
-            src="https://via.placeholder.com/600x400?text=About+StoryApp" 
-            alt="About StoryApp" 
-            className="img-fluid rounded"
-          />
-        </div>
-      </div>
-      <div className="row mt-4">
-        <div className="col">
-          <h2 className="display-6">Our Team</h2>
-          <ul className="list-unstyled">
-            <li className="mb-3">
-              <h5>John Doe</h5>
-              <p>Founder & Lead Developer</p>
-            </li>
-            <li className="mb-3">
-              <h5>Jane Smith</h5>
-              <p>Creative Director</p>
-            </li>
-            <li>
-              <h5>Emily Johnson</h5>
-              <p>UI/UX Designer</p>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  );
-}
+      <div>  
+        <h2 className="text-2xl font-semibold text-gray-800">Our Team</h2>  
+        <ul className="list-disc pl-5 text-gray-600">  
+          <li className="mb-2">  
+            <strong>John Doe</strong> - Founder & Lead Developer  
+          </li>  
+          <li className="mb-2">  
+            <strong>Jane Smith</strong> - Creative Director  
+          </li>  
+          <li>  
+            <strong>Emily Johnson</strong> - UI/UX Designer  
+          </li>  
+        </ul>  
+      </div>  
+    </div>  
+  );  
+}  
 
 export default AboutPage;
