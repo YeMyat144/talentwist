@@ -24,9 +24,9 @@ function Home() {
 
   const stories = [
     { id: 1, title: 'The Dark Forest', category: 'Fantasy' },
-    { id: 2, title: 'The Treasure Hunt', category: 'Adventure' },
-    { id: 3, title: 'The Dragon\'s Lair', category: 'Fantasy' },
-    { id: 4, title: 'The Haunted Mansion', category: 'Horror' },
+    { id: 2, title: 'The Haunted Mansion', category: 'Horror' },
+    { id: 3, title: 'The Space Odyssey', category: 'Fantasy' },
+    { id: 4, title: 'The Lost City', category: 'Horror' },
     { id: 5, title: 'The Mysterious Island', category: 'Adventure' },
     { id: 6, title: 'The Secret Tunnel', category: 'Adventure' },
     { id: 7, title: 'The Hidden Temple', category: 'Adventure' },
@@ -43,7 +43,6 @@ function Home() {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          
           <Link to="/" style={{ color: '#fff', textDecoration: 'none', marginRight: '20px' }}>Home</Link>
           <Link to="/about" style={{ color: '#fff', textDecoration: 'none', marginRight: '20px' }}>About</Link>
           <Link to="/contact" style={{ color: '#fff', textDecoration: 'none' }}>Contact</Link>
