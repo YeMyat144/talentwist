@@ -22,8 +22,8 @@ const useStyles = makeStyles({
 function ProfilePage() {
     const classes = useStyles();
   const [user, setUser] = useState({
-    name: 'John Doe',
-    email: 'john@example.com',
+    name: 'Name',
+    email: 'Email',
     avatar: 'https://via.placeholder.com/150' 
   });
 
