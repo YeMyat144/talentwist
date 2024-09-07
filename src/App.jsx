@@ -4,6 +4,7 @@ import Home from './views/Home';
 import StoryPage from './views/StoryPage';
 import AboutPage from './views/AboutPage';
 import ContactPage from './views/ContactPage';
+import ProfilePage from './views/Profile';
 import Navbar from './components/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
@@ -18,6 +19,7 @@ function App() {
           <Route path="/story/:storyId" element={<StoryPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
         </Routes>
       </div>
     </Router>

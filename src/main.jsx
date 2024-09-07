@@ -6,6 +6,7 @@ import Home from './views/Home';
 import StoryPage from './views/StoryPage';
 import AboutPage from './views/AboutPage';
 import ContactPage from './views/ContactPage';
+import ProfilePage from './views/Profile';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -15,6 +16,7 @@ ReactDOM.render(
         <Route path="/story/:storyId" element={<StoryPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
       </Routes>
     </Router>
   </React.StrictMode>,
