@@ -1,11 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Story from '../components/Story';
-import { AppBar, Toolbar, Typography, Button, Card, CardContent, Grid, Container, List, ListItem, ListItemText, CircularProgress } from '@mui/material';
+import { AppBar, Toolbar, Typography, Button, Card, CardContent, Grid, Container, List, ListItem, IconButton, ListItemText, CircularProgress } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import { makeStyles } from '@mui/styles';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+
+const useStyles = makeStyles({
+  root: {
+    flexGrow: 1,
+  },
+  searchBar: {
+    margin: '20px 0',
+  },
+  card: {
+    maxWidth: 345,
+  },
+  media: {
+    height: 140,
+  },
+});
 
 function StoryPage() {
+  const classes = useStyles();
   const { storyId } = useParams();
   const [currentNode, setCurrentNode] = useState(null);
   const [storyNodes, setStoryNodes] = useState([]);
@@ -441,17 +459,21 @@ function StoryPage() {
   };
 
   return (
-    <Container maxWidth="md" sx={{ mt: 5 }}>
-      {/* Navigation Bar */}
+    <div className={classes.root}>
       <AppBar position="static">
-        <Toolbar>
-          <Link to="/" style={{ color: '#fff', textDecoration: 'none', marginRight: '20px' }}>Home</Link>
-          <Link to="/about" style={{ color: '#fff', textDecoration: 'none', marginRight: '20px' }}>About</Link>
-          <Link to="/contact" style={{ color: '#fff', textDecoration: 'none' }}>Contact</Link>
-        </Toolbar>
+       <Toolbar>
+        <Link to="/" style={{ color: '#fff', textDecoration: 'none', marginRight: '20px' }}>Home</Link>
+        <Link to="/about" style={{ color: '#fff', textDecoration: 'none', marginRight: '20px' }}>About</Link>
+        <Link to="/contact" style={{ color: '#fff', textDecoration: 'none', marginRight: 'auto' }}>Contact</Link>
+        
+        <Link to="/profile" style={{ color: '#fff', textDecoration: 'none' }}>
+          <IconButton color="inherit">
+            <AccountCircleIcon />
+          </IconButton>
+        </Link>
+       </Toolbar>
       </AppBar>
-
-      {/* Story Content */}
+      <Container maxWidth="md" sx={{ mt: 5 }}>
       {currentNode ? (
         <Card sx={{ mt: 4, boxShadow: 3 }}>
           <CardContent>
@@ -481,7 +503,8 @@ function StoryPage() {
           Return to Home
         </Button>
       </Grid>
-    </Container>
+      </Container>
+    </div>
   );
 }
 

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Avatar, Button, AppBar, Toolbar, TextField, Typography, Container, Box } from '@mui/material';
+import { Avatar, Button, Input, AppBar, Toolbar, TextField, Typography, IconButton, Container, Box } from '@mui/material';
 import { makeStyles } from '@mui/styles';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 const useStyles = makeStyles({
     root: {
@@ -27,6 +28,7 @@ function ProfilePage() {
   });
 
   const [editMode, setEditMode] = useState(false);
+  const [avatarFile, setAvatarFile] = useState(null);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -36,6 +38,21 @@ function ProfilePage() {
     }));
   };
 
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setAvatarFile(file);
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setUser((prevUser) => ({
+          ...prevUser,
+          avatar: reader.result
+        }));
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Updated User Info:', user);
@@ -43,15 +60,21 @@ function ProfilePage() {
   };
 
   return (
-    <Container sx={{ mt: 5 }}>
-        <AppBar position="static">
-        <Toolbar>
-          <Link to="/" style={{ color: '#fff', textDecoration: 'none', marginRight: '20px' }}>Home</Link>
-          <Link to="/about" style={{ color: '#fff', textDecoration: 'none', marginRight: '20px' }}>About</Link>
-          <Link to="/contact" style={{ color: '#fff', textDecoration: 'none' }}>Contact</Link>
-          <Link to="/profile" style={{ color: '#fff', textDecoration: 'none' }}>Profile</Link>
-        </Toolbar>
-      </AppBar>
+    <div className={classes.root}>
+      <AppBar position="static">
+       <Toolbar>
+        <Link to="/" style={{ color: '#fff', textDecoration: 'none', marginRight: '20px' }}>Home</Link>
+        <Link to="/about" style={{ color: '#fff', textDecoration: 'none', marginRight: '20px' }}>About</Link>
+        <Link to="/contact" style={{ color: '#fff', textDecoration: 'none', marginRight: 'auto' }}>Contact</Link>
+        
+        <Link to="/profile" style={{ color: '#fff', textDecoration: 'none' }}>
+          <IconButton color="inherit">
+            <AccountCircleIcon />
+          </IconButton>
+        </Link>
+       </Toolbar>
+      </AppBar> 
+      <br />
       <Box display="flex" flexDirection="column" alignItems="center" gap={3}>
         <Avatar
           alt={user.name}
@@ -83,12 +106,13 @@ function ProfilePage() {
               onChange={handleInputChange}
               sx={{ mb: 2 }}
             />
-            <TextField
-              fullWidth
-              label="Avatar URL"
-              name="avatar"
-              value={user.avatar}
-              onChange={handleInputChange}
+            <Typography variant="body1" sx={{ mb: 2 }}>
+              Upload Avatar:
+            </Typography>
+            <Input
+              type="file"
+              accept="image/*"
+              onChange={handleFileChange}
               sx={{ mb: 2 }}
             />
             <Button variant="contained" color="primary" type="submit">
@@ -97,7 +121,7 @@ function ProfilePage() {
           </Box>
         )}
       </Box>
-    </Container>
+    </div>
   );
 }
 
