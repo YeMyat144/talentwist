@@ -8,13 +8,13 @@ const useStyles = makeStyles({
     flexGrow: 1,
   },
   searchBar: {
-    margin: '20px 0',
+    margin: '20px 10px',
   },
   card: {
-    maxWidth: 345,
+    width: 345,
   },
   media: {
-    height: 140,
+    height: 200,
   },
 });
 
@@ -65,7 +65,7 @@ function Home() {
         />
       </div>
 
-      <Grid2 container spacing={3}>
+      <Grid2 container sx={{ ml: 5 }} spacing={5}>
         {filteredStories.slice(0, 9).map(story => (
           <Grid2 item xs={12} sm={6} md={4} key={story.id}>
             <Card className={classes.card}>
