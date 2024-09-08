@@ -25,7 +25,8 @@ function ProfilePage() {
     const [user, setUser] = useState({
         name: 'Name',
         email: 'Email',
-        avatar: 'https://via.placeholder.com/150'
+        avatar: 'https://via.placeholder.com/150',
+        birthDate: 'Birth Date'  // Add birthDate to the initial state
     });
 
     const [editMode, setEditMode] = useState(false);
@@ -78,8 +79,10 @@ function ProfilePage() {
             <AppBar position="static">
                 <Toolbar>
                     <Link to="/" style={{ color: '#fff', textDecoration: 'none', marginRight: '20px' }}>Home</Link>
+                    <Link to="/favorite" style={{ color: '#fff', textDecoration: 'none', marginRight: '20px' }}>Favorite</Link>
                     <Link to="/about" style={{ color: '#fff', textDecoration: 'none', marginRight: '20px' }}>About</Link>
                     <Link to="/contact" style={{ color: '#fff', textDecoration: 'none', marginRight: 'auto' }}>Contact</Link>
+                    
                     <Link to="/profile" style={{ color: '#fff', textDecoration: 'none' }}>
                         <IconButton color="inherit">
                             <AccountCircleIcon />
@@ -94,8 +97,8 @@ function ProfilePage() {
                     src={user.avatar}
                     sx={{ width: 150, height: 150 }}
                 />
-                <Typography variant="h4">{user.name}</Typography>
-                <Typography variant="body1">{user.email}</Typography>
+                <Typography variant="body1">Name: {user.name}</Typography>
+                <Typography variant="body1">Email: {user.email}</Typography>
 
                 <Button variant="outlined" onClick={() => setEditMode(!editMode)}>
                     {editMode ? 'Cancel' : 'Edit Profile'}
@@ -119,6 +122,7 @@ function ProfilePage() {
                             onChange={handleInputChange}
                             sx={{ mb: 2 }}
                         />
+                        
                         <Typography variant="body1" sx={{ mb: 2 }}>
                             Upload Avatar:
                         </Typography>

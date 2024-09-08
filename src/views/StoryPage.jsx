@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Story from '../components/Story';
-import { AppBar, Toolbar, Typography, Button, Card, CardContent, Grid, Container, List, ListItem, IconButton, ListItemText, CircularProgress } from '@mui/material';
+import { AppBar, Toolbar, Typography, Button, Card, CardContent, Grid2, Container, List, ListItem, IconButton, ListItemText, CircularProgress } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { makeStyles } from '@mui/styles';
@@ -243,127 +243,174 @@ function StoryPage() {
     
       },
       5: {
-        title: 'The Underwater Adventure',
+        title: 'The Mysterious Island',
         author: 'Chris Taylor',
         coverImage: 'https://via.placeholder.com/800x400?text=The+Underwater+Adventure',
         startNode: {
           id: 1,
-          text: 'You dive into the ocean to explore a sunken ship.',
+          text: 'You wake up disoriented on a sandy beach. The sound of waves crashing against the shore echoes in the distance, and the salty scent of the ocean fills your lungs. As you sit up, you realize youre on an uncharted island, far from any known civilization. The island is lush with dense vegetation, and towering mountains loom in the distance. You have no recollection of how you got here, but one thing is certain — you need to survive. You notice two paths ahead: one leading into the thick jungle, where strange noises emanate, and another leading up a rocky hill that provides a better view of the island.',
           choices: [
-            { text: 'Swim towards the ship', nextNode: 2 },
-            { text: 'Explore the coral reef nearby', nextNode: 3 },
+            { text: 'Explore the jungle', nextNode: 2 },
+            { text: 'Climb the rocky hill', nextNode: 3 },
           ],
         },
         nodes: [
           {
             id: 2,
-            text: 'You find the ship filled with treasure.',
-            choices: [{ text: 'Take the treasure', nextNode: 4 }],
+            text: 'Venturing into the jungle, you feel the temperature rise as the canopy of trees traps the humid air around you. Exotic birds call from above, and unseen creatures rustle through the underbrush. Suddenly, the jungle opens up to reveal an ancient stone temple, its walls covered in vines and moss. It seems abandoned, but the faint glow of light from within suggests otherwise. You have a choice: Do you enter the temple and uncover its secrets, or do you continue deeper into the jungle, following the mysterious sounds of rushing water?',
+            choices: [{ text: 'Enter the temple', nextNode: 4 },
+              { text: 'Follow the sounds of water', nextNode: 5 },
+            ],
           },
           {
             id: 3,
-            text: 'You find a hidden cave in the reef.',
-            choices: [{ text: 'Enter the cave', nextNode: 5 }],
+            text: 'You decide to climb the rocky hill, hoping to get a better vantage point of the island. The ascent is difficult, and sharp rocks threaten to cut your hands as you scramble up. Finally, you reach the top, panting and out of breath. From this height, you can see the entire island — a lush jungle below, a shimmering river winding through it, and in the distance, what looks like a smoking volcano. More disturbingly, you spot a wrecked ship near the shore, likely the one you were on before you woke up. Just as youre about to descend, you notice a group of strange, humanoid figures moving toward the jungle. Do you try to approach the wreckage of the ship, or do you follow the strange figures?',
+            choices: [{ text: 'Approach the shipwreck', nextNode: 6 },
+              { text: 'Follow the strange figures', nextNode: 7 },
+            ],
           },
           {
             id: 4,
-            text: 'The treasure is cursed, and strange things start happening.',
+            text: 'You step cautiously into the temple, the air cool and thick with the scent of dust and decay. The dim light from outside barely illuminates the stone walls, which are carved with strange symbols and depictions of ancient gods. As you move deeper, you come across a large chamber at the heart of the temple. In the center of the room is a massive stone statue, its eyes glowing faintly. Surrounding the statue are strange artifacts and treasures. But something feels off — an overwhelming sense of being watched creeps over you. Suddenly, you hear a loud rumble as the entrance begins to close. Do you try to escape, or investigate the statue?',
             choices: [],
           },
           {
             id: 5,
-            text: 'Inside the cave, you find a pearl of immense value.',
+            text: 'You leave the temple behind and follow the mysterious sounds of rushing water. After trekking through thick underbrush, you emerge into a hidden valley, where a majestic waterfall cascades down into a crystal-clear pool. The scene is almost too beautiful to be real. As you approach the pool, you notice something strange beneath the water — a submerged, metallic object, glinting in the sunlight. Could it be a clue to your escape, or is it something more dangerous? Nearby, a small, peaceful cave invites you to take shelter. Will you investigate the object in the water or explore the cave?',
             choices: [],
           },
           {
             id: 6,
-            text: 'You safely return to the surface with your findings.',
+            text: 'With renewed determination, you descend the rocky hill and make your way toward the wrecked ship. The closer you get, the more the details become clear — its the ship you were on, shattered against the jagged rocks near the shore. Debris litters the beach, and you find remnants of supplies, maps, and tools. As you sift through the wreckage, you hear faint voices in the distance. Someone else survived the crash! Do you signal to the voices and try to find the others, or do you search the wreckage for more supplies before meeting them?',
+            choices: [],
+          },
+          {
+            id: 7,
+            text: 'Intrigued by the strange figures, you decide to follow them into the jungle. The dense foliage makes it difficult to keep up, but you catch glimpses of their movements ahead. Eventually, you reach a clearing where the figures have gathered around a large, mysterious object. As you approach, you realize its a portal — a shimmering gateway to another world. The figures seem to be preparing to enter, their expressions a mix of fear and excitement. Do you join them and step through the portal, or do you stay behind and observe?',
             choices: [],
           },
         ],
       },
       6: {
-        title: 'The Enchanted Forest',
+        title: 'The Secret Tunnel',
         author: 'Sarah Johnson',
         coverImage: 'https://via.placeholder.com/800x400?text=The+Enchanted+Forest',
         startNode: {
           id: 1,
-          text: 'You enter a magical forest filled with mystical creatures.',
+          text: 'As you explore the dense forest, your eyes catch a glimpse of something unusual among the foliage. Pushing aside the thick vines, you uncover a small, weathered stone entrance partially hidden by overgrown plants. The entrance appears to be a tunnel leading into the earth, its mouth dark and mysterious. A sense of adventure tingles at your fingertips as you consider what might lie beyond this hidden passage.',
           choices: [
-            { text: 'Follow the fairy', nextNode: 2 },
-            { text: 'Explore the hidden cave', nextNode: 3 },
+            { text: 'Enter the secret tunnel', nextNode: 2 },
+            { text: 'Continue exploring the forest', nextNode: 3 },
           ],
         },
         nodes: [
           {
             id: 2,
-            text: 'The fairy leads you to a hidden waterfall.',
-            choices: [{ text: 'Drink from the waterfall', nextNode: 4 }],
+            text: 'You muster up the courage and step into the tunnel. The passage is narrow and damp, with walls covered in ancient, faded inscriptions. You walk cautiously, using your flashlight to illuminate the way. As you proceed, the air grows cooler, and the tunnel seems to stretch on endlessly. Eventually, you reach a large, dimly lit chamber. The walls of the chamber are adorned with intricate carvings, depicting scenes of a bygone era. At the center of the chamber is a massive stone door, adorned with mysterious symbols and markings.',
+            choices: [{ text: 'Examine the carvings on the walls', nextNode: 4 },
+              { text: 'Attempt to open the stone door', nextNode: 5 },
+              { text: 'Retreat back through the tunnel', nextNode: 6 },
+            ],
           },
           {
             id: 3,
-            text: 'Inside the cave, you find a glowing crystal.',
-            choices: [{ text: 'Touch the crystal', nextNode: 5 }],
+            text: 'Deciding to explore further into the forest, you find yourself wandering deeper into uncharted territory. The forest becomes denser, and the sounds of wildlife grow louder. Eventually, you stumble upon an old, abandoned campsite. The remnants of a long-forgotten expedition are scattered around — old maps, a rusted pickaxe, and a partially buried journal. As you sift through the items, you discover a page with a sketch of a tunnel entrance, similar to the one you passed by earlier. The realization hits you: you were right to be curious about the tunnel.',
+            choices: [{ text: 'Return to the tunnel entrance', nextNode: 2},
+              { text: 'Investigate the abandoned campsite further', nextNode: 7 },
+            ],
           },
           {
             id: 4,
-            text: 'Drinking from the waterfall grants you magical powers.',
-            choices: [],
+            text: 'You carefully examine the carvings on the walls of the chamber. The intricate designs depict scenes of ancient rituals and ceremonies, with figures dressed in elaborate robes and holding mysterious artifacts. One carving catches your eye — it shows a figure unlocking a hidden mechanism on the stone door. You notice that the symbols around the door match those in the carving. It seems that understanding these carvings might be the key to accessing whatever lies beyond the door.',
+            choices: [
+              { text: 'Attempt to decipher the symbols', nextNode: 5 },
+              { text: 'Explore the chamber further', nextNode: 6 },
+            ],
           },
           {
             id: 5,
-            text: 'Touching the crystal transports you to another realm.',
+            text: 'You carefully study the carvings and the symbols around the stone door. Using the clues you have gathered, you begin to manipulate the symbols and patterns on the door. With a series of twists and turns, the door creaks open, revealing a hidden chamber beyond. Inside, you find a treasure trove of ancient artifacts, glittering with a golden sheen. Old scrolls, ornate jewelry, and mysterious relics fill the chamber, hinting at a rich and enigmatic history. Among the artifacts, you discover a journal that details the history of the tunnel and its purpose.',
             choices: [],
           },
           {
             id: 6,
-            text: 'You encounter a mischievous gnome who offers you a quest.',
+            text: 'Feeling that you have explored enough, you decide to turn back and leave the tunnel. As you retrace your steps, you can’t shake the feeling that you may have missed something significant. The tunnel’s dark and mysterious atmosphere remains in your mind as you exit and return to the forest. You are left with a lingering curiosity about what secrets the tunnel might have held and whether you’ll ever have the chance to uncover them.',
             choices: [],
           },
+          {
+            id: 7,
+            text: 'You decide to investigate the abandoned campsite further. As you dig through the scattered items, you find a hidden compartment in the ground. Inside, there is a small, weathered box with a combination lock. After carefully inspecting the box, you find an old note hidden beneath it, detailing the combination. You open the box to reveal a set of old maps and a journal that describes the tunnel you discovered earlier. The journal provides detailed instructions on how to navigate the tunnel and unlock its secrets. With this newfound knowledge, you are now better prepared to explore the tunnel and uncover its mysteries.',
+            choices: [],
+          }
         ],
       },
       7: {
-        title: 'The Time Traveler',
+        title: 'The Underwater Adventure',
         author: 'Michael Anderson',
         coverImage: 'https://via.placeholder.com/800x400?text=The+Time+Traveler',
         startNode: {
           id: 1,
-          text: 'You discover a time machine hidden in an old attic.',
+          text: 'While exploring a secluded coastal area, you discover a hidden cave partially submerged in the sea. The cave entrance is just above the waterline, with a narrow passage leading deeper into the cliff. The cave walls are lined with iridescent minerals that reflect the dim light of the setting sun, casting an otherworldly glow. As you peer inside, you notice a faint, rhythmic pulsing coming from within, almost as if the cave itself is alive. The allure of the unknown beckons you forward. You wonder what lies beyond this mysterious entrance and whether you should delve deeper into its secrets.',
           choices: [
-            { text: 'Travel to the past', nextNode: 2 },
-            { text: 'Travel to the future', nextNode: 3 },
+            { text: 'Enter the cave and explore the underwater passage', nextNode: 2 },
+            { text: 'Investigate the area around the cave first', nextNode: 3 },
           ],
         },
         nodes: [
           {
             id: 2,
-            text: 'You find yourself in ancient Egypt during the time of the pharaohs.',
-            choices: [{ text: 'Explore the pyramids', nextNode: 4 }],
+            text: 'With a sense of adventure, you don your diving gear and plunge into the water, swimming toward the cave entrance. The water is surprisingly warm and clear, allowing you to see the vibrant marine life surrounding you. As you swim deeper, the cave opens up into an expansive underwater cavern. Schools of colorful fish dart around, and bioluminescent algae light up the walls, illuminating ancient carvings that hint at a long-lost civilization. The deeper you go, the more you sense that you are not alone in this underwater realm. A strange, echoing sound reverberates through the cavern, guiding you further in.',
+            choices: [{ text: 'Follow the echoing sound deeper into the cavern', nextNode: 4 },
+              { text: 'Examine the ancient carvings on the walls', nextNode: 5 },
+            ],
           },
           {
             id: 3,
-            text: 'You arrive in a futuristic city filled with advanced technology.',
-            choices: [{ text: 'Interact with the robots', nextNode: 5 }],
+            text: 'You decide to explore the area around the cave entrance. As you investigate, you find several old shipwrecks and pieces of nautical equipment scattered around the shoreline. Among the wreckage, you discover a weathered map with cryptic symbols and instructions written in an ancient script. The map appears to indicate that the cave is part of an intricate network of underwater tunnels leading to hidden treasures. The discovery piques your curiosity, and you consider whether to follow the maps directions or dive straight into the cave.',
+            choices: [{ text: 'Follow the map’s directions to explore other underwater tunnels', nextNode: 6 },
+              { text: 'Enter the cave as initially planned ', nextNode: 2 }
+            ],
           },
           {
             id: 4,
-            text: 'Inside the pyramid, you discover a hidden treasure.',
-            choices: [{ text: 'Take the treasure', nextNode: 6 }],
+            text: 'You decide to follow the echoing sound deeper into the cavern. The path becomes narrower, and the water grows colder. After navigating through a series of tight passages, you emerge into a grand, submerged chamber. At the center of the chamber is an ancient, ornate pedestal with a shimmering, mysterious orb resting upon it. The orb emits a soft, pulsating light, and you can feel a strong current of energy emanating from it. The chamber walls are adorned with more intricate carvings, depicting scenes of ocean deities and mythical sea creatures.',
+            choices: [{ text: 'Investigate the orb on the pedestal', nextNode: 7},
+              { text: 'Study the carvings on the chamber walls', nextNode: 5 },
+            ],
           },
           {
             id: 5,
-            text: 'The robots offer you a chance to join their society.',
-            choices: [],
+            text: 'ou decide to examine the ancient carvings on the cavern walls. The carvings tell the story of an ancient maritime civilization that revered the ocean and its mystical properties. The scenes depict a grand city submerged beneath the waves, ruled by powerful sea deities. One carving catches your eye: it shows a ritual involving a glowing orb similar to the one you saw on the pedestal. The carving suggests that the orb is a key to unlocking a hidden treasure or secret. With this knowledge, you feel compelled to investigate the orb further.',
+            choices: [
+              { text: 'Investigate the orb on the pedestal', nextNode: 7 },
+              { text: 'Return to the cave entrance and explore other areas', nextNode: 6 },
+            ],
           },
           {
             id: 6,
-            text: 'Taking the treasure triggers a curse that sends you back to the present.',
-            choices: [],
+            text: 'You decide to follow the map directions to explore other underwater tunnels. Swimming through the tunnels, you come across a series of interconnected caves. Each cave contains different artifacts and remnants of the ancient civilization: ornate pottery, old scrolls, and treasure chests. In one of the caves, you find a peculiar key with a strange symbol etched into it. The key appears to match the symbol on the ancient map, leading you to believe it might be connected to the orb you saw earlier.',
+            choices: [
+              { text: 'Return to the grand chamber with the orb', nextNode: 7 },
+              { text: 'Continue exploring the underwater tunnels', nextNode: 8 },
+            ],
           },
+          {
+            id: 7,
+            text: 'You carefully approach the orb on the pedestal, feeling the powerful energy it radiates. Using the key you discovered earlier, you unlock a hidden compartment within the pedestal. Inside, you find a beautifully crafted chest, encrusted with jewels and adorned with intricate designs. The chest seems to hum with the same energy as the orb. With a sense of anticipation, you open the chest to reveal a collection of ancient artifacts and scrolls, as well as a detailed map of the lost city depicted in the carvings. This discovery opens the door to further adventures and mysteries waiting to be unraveled.',
+            choices: [
+              { text: 'Continue exploring the underwater cavern', nextNode: 8 },
+              { text: 'Return to the surface with your newfound treasures'},
+            ], 
+          },
+          {
+            id: 8,
+            text: 'You decide to continue exploring the underwater tunnels, driven by the thrill of discovery. Following the key and map, you navigate through hidden passages and ancient underwater ruins. Each discovery brings you closer to understanding the full extent of the lost civilizations secrets. You find additional artifacts, each more fascinating than the last, and uncover the full story of a once-great city now submerged beneath the waves. The adventure leaves you with a deep sense of accomplishment and a newfound appreciation for the mysteries of the ocean.',
+            choices: [],
+          }
         ],
       },
       8: {
-        title: 'The Magical Kingdom',
+        title: 'The Time Traveler',
         author: 'Emma Wilson',
         coverImage: 'https://via.placeholder.com/800x400?text=The+Magical+Kingdom',
         startNode: {
@@ -463,6 +510,7 @@ function StoryPage() {
       <AppBar position="static">
        <Toolbar>
         <Link to="/" style={{ color: '#fff', textDecoration: 'none', marginRight: '20px' }}>Home</Link>
+        <Link to="/favorite" style={{ color: '#fff', textDecoration: 'none', marginRight: '20px' }}>Favorite</Link>
         <Link to="/about" style={{ color: '#fff', textDecoration: 'none', marginRight: '20px' }}>About</Link>
         <Link to="/contact" style={{ color: '#fff', textDecoration: 'none', marginRight: 'auto' }}>Contact</Link>
         
@@ -492,17 +540,17 @@ function StoryPage() {
           </CardContent>
         </Card>
       ) : (
-        <Grid container justifyContent="center" sx={{ mt: 5 }}>
+        <Grid2 container justifyContent="center" sx={{ mt: 5 }}>
           <CircularProgress />
-        </Grid>
+        </Grid2>
       )}
 
       {/* Return to Home Button */}
-      <Grid container justifyContent="center" sx={{ mt: 4 }}>
+      <Grid2 container justifyContent="center" sx={{ mt: 4 }}>
         <Button variant="contained" color="secondary" startIcon={<HomeIcon />} component={Link} to="/">
           Return to Home
         </Button>
-      </Grid>
+      </Grid2>
       </Container>
     </div>
   );

@@ -7,6 +7,7 @@ import StoryPage from './views/StoryPage';
 import AboutPage from './views/AboutPage';
 import ContactPage from './views/ContactPage';
 import ProfilePage from './views/Profile';
+import FavoritePage from './views/FavoritePage';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -17,6 +18,7 @@ ReactDOM.render(
         <Route path="/about" element={<AboutPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/favorite" element={<FavoritePage />} />
       </Routes>
     </Router>
   </React.StrictMode>,

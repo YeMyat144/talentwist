@@ -1,14 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { IconButton, AppBar, Toolbar, Typography, TextField, Grid2, Card, CardMedia, CardContent, Button } from '@mui/material';
+import { IconButton, AppBar, Toolbar, Typography, TextField, Grid2, Card, Box, CardMedia, CardContent, Button } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+
 const useStyles = makeStyles({
   root: {
     flexGrow: 1,
   },
   searchBar: {
-    margin: '20px 10px',
+    margin: '20px 40px',
   },
   card: {
     width: 345,
@@ -21,6 +24,7 @@ const useStyles = makeStyles({
 function Home() {
   const classes = useStyles();
   const [searchQuery, setSearchQuery] = useState('');
+  const [favorites, setFavorites] = useState([]);
 
   const stories = [
     { id: 1, title: 'The Dark Forest', category: 'Fantasy' },
@@ -29,21 +33,41 @@ function Home() {
     { id: 4, title: 'The Lost City', category: 'Horror' },
     { id: 5, title: 'The Mysterious Island', category: 'Adventure' },
     { id: 6, title: 'The Secret Tunnel', category: 'Adventure' },
-    { id: 7, title: 'The Hidden Temple', category: 'Adventure' },
-    { id: 8, title: 'The Forbidden City', category: 'Fantasy' },
-    { id: 9, title: 'The Enchanted Forest', category: 'Fantasy' },
+    { id: 7, title: 'The Underwater Adventure', category: 'Adventure' },
+    { id: 8, title: 'The Time Traveler', category: 'Fantasy' },
+    { id: 9, title: 'The Pirate Treasure', category: 'Fantasy' },
     { id: 10, title: 'The Witch\'s Cottage', category: 'Horror' },
   ];
+
+  // Load favorites from localStorage when component mounts
+  useEffect(() => {
+    const savedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    setFavorites(savedFavorites);
+  }, []);
+
+  // Save favorites to localStorage whenever the favorites state changes
+  useEffect(() => {
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+  }, [favorites]);
 
   const filteredStories = stories.filter(story =>
     story.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+  const toggleFavorite = (id) => {
+    setFavorites((prevFavorites) =>
+      prevFavorites.includes(id)
+        ? prevFavorites.filter(favId => favId !== id)
+        : [...prevFavorites, id]
+    );
+  };
 
   return (
     <div className={classes.root}>
       <AppBar position="static">
        <Toolbar>
         <Link to="/" style={{ color: '#fff', textDecoration: 'none', marginRight: '20px' }}>Home</Link>
+        <Link to="/favorite" style={{ color: '#fff', textDecoration: 'none', marginRight: '20px' }}>Favorite</Link>
         <Link to="/about" style={{ color: '#fff', textDecoration: 'none', marginRight: '20px' }}>About</Link>
         <Link to="/contact" style={{ color: '#fff', textDecoration: 'none', marginRight: 'auto' }}>Contact</Link>
         
@@ -81,9 +105,19 @@ function Home() {
                 <Typography variant="body2" color="textSecondary" component="p">
                   A brief description of {story.title}.
                 </Typography>
+                <br />
+                <Box display="flex" alignItems="center"> 
                 <Button component={Link} to={`/Story/${story.id}`} variant="contained" color="primary">
                   Read More
                 </Button>
+                <IconButton onClick={() => toggleFavorite(story.id)} sx={{ marginLeft: 20}}>
+                  {favorites.includes(story.id) ? (
+                    <FavoriteIcon color="error" />
+                  ) : (
+                    <FavoriteBorderIcon />
+                  )}
+                </IconButton>
+                </Box>
               </CardContent>
             </Card>
           </Grid2>
