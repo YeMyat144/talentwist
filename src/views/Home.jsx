@@ -5,6 +5,7 @@ import { makeStyles } from '@mui/styles';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import black from '../assets/wu.jpeg';
 
 const useStyles = makeStyles({
   root: {
@@ -27,7 +28,7 @@ function Home() {
   const [favorites, setFavorites] = useState([]);
 
   const stories = [
-    { id: 1, title: 'The Dark Forest', category: 'Fantasy' },
+    { id: 1, title: 'The Dark Forest', category: 'Fantasy', coverImage: 'black' },
     { id: 2, title: 'The Haunted Mansion', category: 'Horror' },
     { id: 3, title: 'The Space Odyssey', category: 'Fantasy' },
     { id: 4, title: 'The Lost City', category: 'Horror' },
@@ -95,7 +96,7 @@ function Home() {
             <Card className={classes.card}>
               <CardMedia
                 className={classes.media}
-                image={`https://via.placeholder.com/300?text=${story.title}`}
+                image={black}
                 title={story.title}
               />
               <CardContent>

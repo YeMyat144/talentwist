@@ -415,38 +415,60 @@ function StoryPage() {
         coverImage: 'https://via.placeholder.com/800x400?text=The+Magical+Kingdom',
         startNode: {
           id: 1,
-          text: 'You stumble upon a hidden portal that leads to a magical kingdom.',
+          text: 'In a dusty, forgotten corner of an old antique shop, you stumble upon a peculiar device that immediately catches your attention. It’s an intricately designed pocket watch with an array of strange dials and symbols etched onto its surface. The shopkeeper, an eccentric old man with a twinkle in his eye, explains that the device belonged to a renowned inventor who claimed it could manipulate time. Skeptical yet intrigued, you purchase the device and take it home. As you examine it further, you notice that it seems to pulse with a faint, rhythmic glow. You cant help but wonder if there is some truth to the shopkeepers tale.',
           choices: [
-            { text: 'Meet the wise wizard', nextNode: 2 },
-            { text: 'Explore the enchanted forest', nextNode: 3 },
+            { text: 'Attempt to activate the device and see what happens', nextNode: 2 },
+            { text: 'Research the history of the inventor and the device first', nextNode: 3 },
           ],
         },
         nodes: [
           {
             id: 2,
-            text: 'The wise wizard grants you a magical amulet.',
-            choices: [{ text: 'Wear the amulet', nextNode: 4 }],
+            text: 'You decide to test the device. Following the instructions scribbled on a faded piece of parchment found in the box, you twist the dials and press a series of buttons. Suddenly, the pocket watch begins to glow brightly, and you feel a rush of disorienting energy. When the light subsides, you find yourself in a completely different place. The surroundings are unfamiliar—a bustling cityscape filled with futuristic technology and towering skyscrapers. You realize that the device has transported you to a future time. The air is filled with the hum of advanced machinery, and people are dressed in sleek, high-tech clothing. As you wander through the streets, you must figure out how to navigate this new world and find a way back.',
+            choices: [{ text: 'Explore the futuristic city and gather information', nextNode: 4 },
+              { text: 'Attempt to activate the device and return to your time', nextNode: 5 },
+            ],
           },
           {
             id: 3,
-            text: 'In the forest, you encounter talking animals.',
-            choices: [{ text: 'Listen to the animals', nextNode: 5 }],
+            text: 'You decide to research the history of the inventor and the device. After hours of sifting through old records and manuscripts, you uncover fascinating details about the inventor’s experiments with time manipulation. It turns out that the inventor was obsessed with discovering the secrets of time travel and had created several prototypes. Among the records, you find a reference to a specific location—a hidden laboratory where the final prototype was developed. The notes suggest that this laboratory holds the key to understanding and controlling the time device’s powers. Excited by the prospect of further discovery, you decide to seek out this hidden laboratory.',
+            choices: [{ text: 'Search for the hidden laboratory based on the clues found', nextNode: 6 },
+              { text: 'Continue your research for more information on time travel', nextNode: 7 },
+            ],
           },
           {
             id: 4,
-            text: 'Wearing the amulet gives you the ability to fly.',
-            choices: [],
+            text: 'In the futuristic city, you marvel at the advanced technology surrounding you. Holographic advertisements float above the streets, and autonomous vehicles glide silently by. You stumble upon a high-tech research center where you meet a scientist who is intrigued by your story. She reveals that the city is a hub for technological innovation and that time travel research is an ongoing project. She offers to help you investigate the device and its origins. Together, you delve into the city’s archives and discover that the device was created as part of an experimental program to test the limits of time travel. The scientist suggests that you might be able to use the city’s technology to return to your original time.',
+            choices: [
+              { text: 'Collaborate with the scientist to activate the device and return home', nextNode: 5 },
+              { text: 'Continue exploring the city and learning about its advancements', nextNode: 8 },
+            ],
           },
           {
             id: 5,
-            text: 'The animals reveal a hidden treasure map.',
-            choices: [],
+            text: 'With the scientist’s help, you attempt to reverse the time travel. The city’s advanced technology provides you with new tools and insights into the device’s workings. After several days of experimentation, you manage to recalibrate the device and prepare for a return journey. As you activate the device, a whirlwind of energy surrounds you, and you feel yourself being pulled through time. When the light fades, you find yourself back in the familiar setting of your home, the antique shop in the background. The device is now silent, its glow extinguished. You’ve returned to your original time, but the experience has left you with a deeper understanding of time travel and its implications.',
+            choices: [
+              { text: 'Keep the device and study it further', nextNode: 7 },
+            ],
           },
           {
             id: 6,
-            text: 'You meet the queen of the magical kingdom and become her trusted advisor.',
+            text: 'You follow the clues to the hidden laboratory, a secretive location tucked away in an abandoned part of the city. The laboratory is filled with old, dusty equipment and half-finished experiments. Among the clutter, you find the final prototype of the time device—an elaborate contraption with advanced features and an extensive set of controls. As you examine the prototype, you discover detailed instructions on how to operate it and manipulate time with greater precision. With this newfound knowledge, you realize that you have the power to explore different eras and make significant changes in the timeline.',
+            choices: [
+              { text: 'Activate the prototype and test its capabilities', nextNode: 8 },
+              { text: 'Continue your research on time manipulation', nextNode: 7 },
+            ],
+          },
+          {
+            id: 7,
+            text: 'You decide to spend more time understanding the intricacies of the time device. Delving into the inventor’s notes and experimenting with different settings, you gain a profound understanding of how time travel works and the potential consequences of altering the timeline. You learn about the risks of creating paradoxes and the ethical implications of meddling with history. With this knowledge, you feel more prepared to use the device responsibly. The experience has also sparked a deep curiosity about the possibilities that time travel offers, and you are eager to explore them further.',
             choices: [],
           },
+          {
+            id: 8,
+            text: 'As you explore the futuristic city or the hidden laboratory, you realize that the possibilities with time travel are vast and exhilarating. Whether you’re fascinated by the advanced technology of the future or the secrets of the lost laboratory, you understand that time travel holds both great opportunities and great responsibilities. With your newfound knowledge and experiences, you are ready to embark on further adventures, explore different eras, and uncover the mysteries of time itself. The journey has only just begun, and you’re excited about the future.',
+            choices: [],
+          }
         ],
       },
       9: {
@@ -455,38 +477,62 @@ function StoryPage() {
         coverImage: 'https://via.placeholder.com/800x400?text=The+Pirate%27s+Treasure',
         startNode: {
           id: 1,
-          text: 'You receive a mysterious map leading to a hidden pirate treasure.',
+          text: 'While rummaging through an old trunk in your attic, you uncover a weathered, yellowed parchment. Unfolding it carefully, you realize it’s an ancient map adorned with cryptic symbols and faded writing. The map depicts a distant island marked with an X and surrounded by dangerous reefs and uncharted waters. Along the edge, a faded inscription reads: "To the brave heart who seeks the treasure, follow the stars and face the storm to claim your prize." The map allure is irresistible; the promise of hidden pirate treasure beckons you. With a mix of excitement and trepidation, you decide to set out on a journey to find this legendary treasure.',
           choices: [
-            { text: 'Sail to the deserted island', nextNode: 2 },
-            { text: 'Search for clues in the old tavern', nextNode: 3 },
+            { text: 'Prepare for the journey and set sail immediately', nextNode: 2 },
+            { text: 'Research the map and its origins before starting your adventure', nextNode: 3 },
           ],
         },
         nodes: [
           {
             id: 2,
-            text: 'On the island, you encounter a group of friendly dolphins.',
-            choices: [{ text: 'Follow the dolphins', nextNode: 4 }],
+            text: 'You gather supplies, enlist a crew of adventurous souls, and set sail towards the island marked on the map. The voyage is long and treacherous, with unpredictable weather and rough seas testing your resolve. After weeks at sea, you finally catch sight of the island, shrouded in mist and looming with an air of mystery. As you approach, you navigate through treacherous reefs and anchor your ship near a hidden cove. The island dense jungle and rocky cliffs present an imposing challenge. Undeterred, you and your crew disembark, ready to uncover the secrets hidden within.',
+            choices: [{ text: 'Explore the island jungle for clues', nextNode: 4 },
+              { text: 'Search the coastline for hidden caves or passages', nextNode: 5 },
+            ],
           },
           {
             id: 3,
-            text: 'In the tavern, you find a secret message hidden in a bottle.',
-            choices: [{ text: 'Decode the message', nextNode: 5 }],
+            text: 'You delve into research about the map’s origins, visiting libraries and consulting historians. Through your investigation, you uncover tales of the infamous pirate Captain Blackthorn, who was rumored to have hidden his vast fortune on an island that matches the map’s description. Historical records suggest that Captain Blackthorn’s treasure was fiercely guarded by traps and puzzles, and many who sought it never returned. Armed with this knowledge, you gather more detailed information about the island geography and potential hazards. With a solid plan in hand, you set out to find the treasure, ready to face the challenges that lie ahead.',
+            choices: [{ text: 'Set sail for the island with the knowledge you’ve gained', nextNode: 2 },
+              { text: 'Prepare further by seeking out experts on pirate lore and treasure hunting', nextNode: 6 },
+            ],
           },
           {
             id: 4,
-            text: 'The dolphins guide you to a hidden underwater cave.',
-            choices: [{ text: 'Enter the cave', nextNode: 6 }],
+            text: 'The jungle is a dense, tangled maze of vines and towering trees. As you and your crew forge ahead, you encounter numerous obstacles—hidden pits, venomous snakes, and dense thickets. Following the map’s clues, you discover a series of ancient stone markers partially obscured by foliage. These markers seem to form a path leading deeper into the jungle. At one of the markers, you find a weathered inscription that hints at the next step in your quest: "Seek the guardian of the lost treasure, where the moonlight meets the stone." Determined to decipher this clue, you press on, your excitement growing as you approach the heart of the island.',
+            choices: [{ text: 'Follow the path indicated by the stone markers', nextNode: 7 },
+              { text: 'Search for the guardian of the lost treasure', nextNode: 8 },
+            ],
           },
           {
             id: 5,
-            text: 'Decoding the message reveals the location of the buried treasure.',
-            choices: [],
+            text: 'The hidden cove is a secluded, rocky inlet with a small, hidden cave entrance partially submerged in the water. You carefully explore the cave, which is damp and echoing with the sounds of dripping water. Inside, you find remnants of old pirate equipment and a chest that has long since rusted. Upon opening the chest, you discover a collection of old nautical charts and a journal with faded entries describing the islands dangers and secrets. One entry stands out, mentioning a hidden entrance to a treasure vault buried within the island’s cliffs. Armed with this new information, you regroup with your crew and head to the cliffs to investigate further.',
+            choices: [
+              { text: 'Search the cliffs for the hidden entrance to the treasure vault', nextNode: 7 },
+              { text: 'Use the nautical charts and journal to plan a more detailed search', nextNode: 8 },
+            ],
           },
           {
             id: 6,
-            text: 'Inside the cave, you discover the pirate long-lost treasure.',
-            choices: [],
+            text: 'You decide to seek expert advice on pirate lore and treasure hunting. Consulting with renowned treasure hunters and historians, you gather invaluable insights into the tricks and traps that pirates often used to protect their hoards. One expert reveals that Captain Blackthorn treasure was likely hidden in a complex maze of tunnels beneath the island. Armed with this knowledge, you refine your plan and acquire the necessary tools and equipment to navigate underground passages. With your preparations complete, you set sail for the island, ready to tackle the new challenges ahead.',
+            choices: [
+              { text: 'Proceed to the island and begin the treasure hunt', nextNode:2 },
+              { text: 'Conduct additional research to ensure you’re fully prepared', nextNode: 4 },
+            ],
           },
+          {
+            id: 7,
+            text: 'You follow the path through the jungle, guided by the stone markers. Eventually, you reach a large stone altar at the center of the island, bathed in moonlight. The altar is adorned with intricate carvings and symbols that match those on the map. At the base of the altar, you find a hidden lever. Pulling it reveals a secret passage leading down into the earth. Descending into the passage, you find yourself in a vast underground chamber filled with ancient traps and puzzles. Navigating through the chamber, you encounter a series of challenges that test your wits and courage.',
+            choices: [{ text: 'Solve the puzzles and traps to reach the treasure vault', nextNode: 8 },
+              { text: 'Retreat and regroup to plan a safer approach', nextNode: 5 },
+            ],
+          },
+          {
+            id: 8,
+            text: 'After overcoming the puzzles and traps, you reach the treasure vault. The chamber is filled with glittering piles of gold coins, shimmering jewels, and priceless artifacts. At the center of the room stands a grand chest, adorned with ornate carvings and bound with iron chains. As you approach the chest, you notice a final inscription: "Only those with a pure heart shall claim the prize." With great anticipation, you unlock the chest and discover not only the pirate wealth but also a note from Captain Blackthorn himself. The note reveals that the true treasure was not the gold, but the journey and the wisdom gained along the way. With a sense of accomplishment, you realize that the adventure has been more rewarding than the treasure itself.',
+            choices: [],
+          }
         ]
       },
 
