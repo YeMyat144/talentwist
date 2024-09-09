@@ -90,7 +90,7 @@ function Home() {
         />
       </div>
 
-      <Grid2 container sx={{ ml: 5 }} spacing={5}>
+      <Grid2 container sx={{ ml: 7 }} spacing={4}>
         {filteredStories.slice(0, 9).map(story => (
           <Grid2 item xs={12} sm={6} md={4} key={story.id}>
             <Card className={classes.card}>
