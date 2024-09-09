@@ -22,46 +22,13 @@ const useStyles = makeStyles({
   },
 });
 
-function Home() {
+function Home({ stories, favorites, toggleFavorite }) {
   const classes = useStyles();
   const [searchQuery, setSearchQuery] = useState('');
-  const [favorites, setFavorites] = useState([]);
-
-  const stories = [
-    { id: 1, title: 'The Dark Forest', category: 'Fantasy', coverImage: 'black' },
-    { id: 2, title: 'The Haunted Mansion', category: 'Horror' },
-    { id: 3, title: 'The Space Odyssey', category: 'Fantasy' },
-    { id: 4, title: 'The Lost City', category: 'Horror' },
-    { id: 5, title: 'The Mysterious Island', category: 'Adventure' },
-    { id: 6, title: 'The Secret Tunnel', category: 'Adventure' },
-    { id: 7, title: 'The Underwater Adventure', category: 'Adventure' },
-    { id: 8, title: 'The Time Traveler', category: 'Fantasy' },
-    { id: 9, title: 'The Pirate Treasure', category: 'Fantasy' },
-    { id: 10, title: 'The Witch\'s Cottage', category: 'Horror' },
-  ];
-
-  // Load favorites from localStorage when component mounts
-  useEffect(() => {
-    const savedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
-    setFavorites(savedFavorites);
-  }, []);
-
-  // Save favorites to localStorage whenever the favorites state changes
-  useEffect(() => {
-    localStorage.setItem('favorites', JSON.stringify(favorites));
-  }, [favorites]);
 
   const filteredStories = stories.filter(story =>
     story.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
-
-  const toggleFavorite = (id) => {
-    setFavorites((prevFavorites) =>
-      prevFavorites.includes(id)
-        ? prevFavorites.filter(favId => favId !== id)
-        : [...prevFavorites, id]
-    );
-  };
 
   return (
     <div className={classes.root}>

@@ -4,6 +4,7 @@ import { IconButton, AppBar, Toolbar, Typography, Grid2, Card, CardMedia, CardCo
 import { makeStyles } from '@mui/styles';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import black from '../assets/wu.jpeg';
 
 const useStyles = makeStyles({
   root: {
@@ -17,9 +18,9 @@ const useStyles = makeStyles({
   },
 });
 
-function FavoritePage({ favorites = [], stories = [], toggleFavorite }) {
+function FavoritePage({ favorites, stories, toggleFavorite }) {
   const classes = useStyles();
-
+  
   const favoriteStories = stories.filter(story => favorites.includes(story.id));
 
   return (
@@ -38,7 +39,6 @@ function FavoritePage({ favorites = [], stories = [], toggleFavorite }) {
         </Link>
        </Toolbar>
       </AppBar>
-
       <Typography variant="h4" gutterBottom sx={{ mt: 3, textAlign: 'center' }}>
         Favorite Stories
       </Typography>
@@ -50,7 +50,7 @@ function FavoritePage({ favorites = [], stories = [], toggleFavorite }) {
               <Card className={classes.card}>
                 <CardMedia
                   className={classes.media}
-                  image={`https://via.placeholder.com/300?text=${story.title}`}
+                  image={black}
                   title={story.title}
                 />
                 <CardContent>
@@ -61,10 +61,10 @@ function FavoritePage({ favorites = [], stories = [], toggleFavorite }) {
                     A brief description of {story.title}.
                   </Typography>
                   <br />
-                  <Button component={Link} to={`/Story/${story.id}`} variant="contained" color="primary">
+                  <Button component={Link} to={`/story/${story.id}`} variant="contained" color="primary">
                     Read More
                   </Button>
-                  <IconButton onClick={() => toggleFavorite(story.id)}>
+                  <IconButton onClick={() => toggleFavorite(story.id)} sx={{ marginLeft: 20}}>
                     <FavoriteIcon color="error" />
                   </IconButton>
                 </CardContent>
