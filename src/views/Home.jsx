@@ -12,7 +12,7 @@ const useStyles = makeStyles({
     flexGrow: 1,
   },
   searchBar: {
-    margin: '20px 40px',
+    margin: '20px 56px',
   },
   card: {
     width: 345,

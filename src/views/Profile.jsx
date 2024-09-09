@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Avatar, Button, Input, AppBar, Toolbar, TextField, Typography, IconButton, Box } from '@mui/material';
+import { Avatar, Button, Input, AppBar, Toolbar, TextField,Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Typography, IconButton, Box } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
@@ -97,8 +97,27 @@ function ProfilePage() {
                     src={user.avatar}
                     sx={{ width: 150, height: 150 }}
                 />
-                <Typography variant="body1">Name: {user.name}</Typography>
-                <Typography variant="body1">Email: {user.email}</Typography>
+                <TableContainer component={Paper} sx={{ mt: 2, mb: 2, maxWidth:400 }}>  
+      <Table>  
+        <TableHead>  
+          <TableRow>  
+            <TableCell colSpan={2} align="center">  
+              <Typography variant="h5">Profile</Typography>  
+            </TableCell>  
+          </TableRow>  
+        </TableHead>  
+        <TableBody>  
+          <TableRow>  
+            <TableCell><Typography variant="h6">Name</Typography></TableCell>  
+            <TableCell><Typography variant="body1">{user.name}</Typography></TableCell>  
+          </TableRow>  
+          <TableRow>  
+            <TableCell><Typography variant="h6">Email</Typography></TableCell>  
+            <TableCell><Typography variant="body1">{user.email}</Typography></TableCell>  
+          </TableRow>  
+        </TableBody>  
+      </Table>  
+    </TableContainer>  
 
                 <Button variant="outlined" onClick={() => setEditMode(!editMode)}>
                     {editMode ? 'Cancel' : 'Edit Profile'}
