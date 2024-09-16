@@ -4,20 +4,20 @@ import { AppBar, Toolbar, IconButton, Typography, TextField, Card, CardContent, 
 import { makeStyles } from '@mui/styles';  
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';  
 
-const useStyles = makeStyles({  
-    root: {  
-        flexGrow: 1,  
-        padding: '20px',  
-    },  
-    card: {  
-        maxWidth: 600,  
-        margin: '0 auto',  
-        padding: '20px',  
-    },  
-    textField: {  
-        margin: '10px 0',  
-    },  
-});  
+const useStyles = makeStyles({
+    root: {
+      flexGrow: 1,
+    },
+    searchBar: {
+      margin: '20px 56px',
+    },
+    card: {
+      width: 345,
+    },
+    media: {
+      height: 200,
+    },
+  });
 
 function ContactPage() {  
     const classes = useStyles();  
@@ -34,9 +34,7 @@ function ContactPage() {
 
     const handleSubmit = (e) => {  
         e.preventDefault();  
-        // Handle form submission here  
         console.log('Form submitted:', formData);  
-        // Reset the form or provide user feedback  
     };  
 
     return (  
@@ -54,9 +52,10 @@ function ContactPage() {
                     </Link>  
                 </Toolbar>  
             </AppBar>  
-            <Card className={classes.card}>  
-                <CardContent>  
-                    <Typography variant="h5" component="h2" gutterBottom>  
+
+            <Card>  
+                <CardContent>
+                <Typography variant="h5" component="h2" gutterBottom>  
                         Contact Us  
                     </Typography>  
                     <form onSubmit={handleSubmit}>  
@@ -67,7 +66,6 @@ function ContactPage() {
                             value={formData.name}  
                             onChange={handleChange}  
                             variant="outlined"  
-                            className={classes.textField}  
                             required  
                         />  
                         <TextField  
@@ -78,7 +76,6 @@ function ContactPage() {
                             onChange={handleChange}  
                             variant="outlined"  
                             type="email"  
-                            className={classes.textField}  
                             required  
                         />  
                         <TextField  
@@ -90,14 +87,13 @@ function ContactPage() {
                             variant="outlined"  
                             multiline  
                             rows={4}  
-                            className={classes.textField}  
                             required  
                         />  
                         <Button variant="contained" color="primary" type="submit">  
                             Submit  
                         </Button>  
                     </form>  
-                </CardContent>  
+                </CardContent>
             </Card>  
         </div>  
     );  

@@ -4,20 +4,20 @@ import { AppBar, Toolbar, IconButton, Typography, TextField, Button, Grid, Card,
 import { makeStyles } from '@mui/styles';  
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';  
 
-const useStyles = makeStyles({  
-    root: {  
-        flexGrow: 1,  
-        padding: '20px',  
-    },  
-    card: {  
-        maxWidth: 600,  
-        margin: '0 auto',  
-        padding: '20px',  
-    },  
-    textField: {  
-        margin: '10px 0',  
-    },  
-});  
+const useStyles = makeStyles({
+    root: {
+      flexGrow: 1,
+    },
+    searchBar: {
+      margin: '20px 56px',
+    },
+    card: {
+      width: 345,
+    },
+    media: {
+      height: 200,
+    },
+  }); 
 
 function AboutPage() {  
     const classes = useStyles();  
@@ -34,7 +34,6 @@ function AboutPage() {
 
     const handleSubmit = (e) => {  
         e.preventDefault();  
-        // Here you can handle the form submission, e.g., send the data to a server  
         console.log('Form submitted:', formData);  
     };  
 
@@ -53,7 +52,8 @@ function AboutPage() {
                     </Link>  
                 </Toolbar>  
             </AppBar>  
-            <Card className={classes.card}>  
+
+            <Card>  
                 <CardContent>  
                     <Typography variant="h5" component="h2" gutterBottom>  
                         About Us  
@@ -98,7 +98,7 @@ function AboutPage() {
                             Submit  
                         </Button>  
                     </form>  
-                </CardContent>  
+                </CardContent>   
             </Card>  
         </div>  
     );  
