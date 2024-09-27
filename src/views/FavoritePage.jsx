@@ -5,6 +5,7 @@ import { makeStyles } from '@mui/styles';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import black from '../assets/wu.jpeg';
 import Header from '../components/Header';
+import theme from '../components/theme';
 
 const useStyles = makeStyles({
   root: {
@@ -48,7 +49,7 @@ function FavoritePage({ favorites, stories, toggleFavorite }) {
                     A brief description of {story.title}.
                   </Typography>
                   <br />
-                  <Button component={Link} to={`/story/${story.id}`} variant="contained" color="primary">
+                  <Button component={Link} to={`/story/${story.id}`} variant="contained" sx={{bgcolor: theme.palette.primary.main}}>
                     Read More
                   </Button>
                   <IconButton onClick={() => toggleFavorite(story.id)} sx={{ marginLeft: 20}}>

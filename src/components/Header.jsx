@@ -2,10 +2,11 @@
 import { AppBar, Toolbar, Box, IconButton } from "@mui/material";  
 import { Link } from 'react-router-dom';
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import theme from "./theme";
 
 export default function Header() {
   return (
-    <AppBar position="static">  
+    <AppBar position="static" sx={{ backgroundColor: theme.palette.primary.main }}>  
     <Toolbar>  
       <Link to="/" style={{ color: '#fff', textDecoration: 'none', marginRight: '20px' }}>Home</Link>  
       <Link to="/favorite" style={{ color: '#fff', textDecoration: 'none', marginRight: '20px' }}>Favorite</Link>  

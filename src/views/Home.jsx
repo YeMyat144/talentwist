@@ -6,6 +6,7 @@ import Header from '../components/Header';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import black from '../assets/wu.jpeg';
+import theme from '../components/theme';
 
 const useStyles = makeStyles({
   root: {
@@ -47,7 +48,7 @@ function Home({ stories, favorites, toggleFavorite }) {
       <Grid2 container sx={{ ml: 7 }} spacing={4}>
         {filteredStories.slice(0, 9).map(story => (
           <Grid2 item xs={12} sm={6} md={4} key={story.id}>
-            <Card className={classes.card}>
+            <Card className={classes.card} sx={{bgcolor: theme.palette.text.main}}>
               <CardMedia
                 className={classes.media}
                 image={black}
@@ -62,7 +63,7 @@ function Home({ stories, favorites, toggleFavorite }) {
                 </Typography>
                 <br />
                 <Box display="flex" alignItems="center"> 
-                <Button component={Link} to={`/Story/${story.id}`} variant="contained" color="primary">
+                <Button component={Link} to={`/Story/${story.id}`} variant="contained" sx={{bgcolor: theme.palette.primary.main}}>
                   Read More
                 </Button>
                 <IconButton onClick={() => toggleFavorite(story.id)} sx={{ marginLeft: 20}}>
