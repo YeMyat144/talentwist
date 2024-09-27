@@ -2,8 +2,6 @@ import React, {useState, useEffect} from 'react';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './views/Home';
 import StoryPage from './views/StoryPage';
-import AboutPage from './views/AboutPage';
-import ContactPage from './views/ContactPage';
 import ProfilePage from './views/Profile';
 import FavoritePage from './views/FavoritePage';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -51,8 +49,6 @@ function App() {
             element={<Home stories={stories} favorites={favorites} toggleFavorite={toggleFavorite} />} 
           />
           <Route path="/story/:storyId" element={<StoryPage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/contact" element={<ContactPage />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route 
             path="/favorite" 

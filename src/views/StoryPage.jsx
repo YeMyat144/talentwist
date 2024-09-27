@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import Story from '../components/Story';
 import { AppBar, Toolbar, Typography, Button, Card, CardContent, Grid2, Container, List, ListItem, IconButton, ListItemText, CircularProgress } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { makeStyles } from '@mui/styles';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import Header from '../components/Header';
 
 const useStyles = makeStyles({
   root: {
@@ -553,20 +552,7 @@ function StoryPage() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
-       <Toolbar>
-        <Link to="/" style={{ color: '#fff', textDecoration: 'none', marginRight: '20px' }}>Home</Link>
-        <Link to="/favorite" style={{ color: '#fff', textDecoration: 'none', marginRight: '20px' }}>Favorite</Link>
-        <Link to="/about" style={{ color: '#fff', textDecoration: 'none', marginRight: '20px' }}>About</Link>
-        <Link to="/contact" style={{ color: '#fff', textDecoration: 'none', marginRight: 'auto' }}>Contact</Link>
-        
-        <Link to="/profile" style={{ color: '#fff', textDecoration: 'none' }}>
-          <IconButton color="inherit">
-            <AccountCircleIcon />
-          </IconButton>
-        </Link>
-       </Toolbar>
-      </AppBar>
+      <Header/>
       <Container maxWidth="md" sx={{ mt: 5 }}>
       {currentNode ? (
         <Card sx={{ mt: 4, boxShadow: 3 }}>

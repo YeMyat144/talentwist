@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { Avatar, Button, Input, AppBar, Toolbar, TextField,Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Typography, IconButton, Box } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import Header from '../components/Header';
 
 const useStyles = makeStyles({
     root: {
@@ -76,20 +75,7 @@ function ProfilePage() {
 
     return (
         <div className={classes.root}>
-            <AppBar position="static">
-                <Toolbar>
-                    <Link to="/" style={{ color: '#fff', textDecoration: 'none', marginRight: '20px' }}>Home</Link>
-                    <Link to="/favorite" style={{ color: '#fff', textDecoration: 'none', marginRight: '20px' }}>Favorite</Link>
-                    <Link to="/about" style={{ color: '#fff', textDecoration: 'none', marginRight: '20px' }}>About</Link>
-                    <Link to="/contact" style={{ color: '#fff', textDecoration: 'none', marginRight: 'auto' }}>Contact</Link>
-                    
-                    <Link to="/profile" style={{ color: '#fff', textDecoration: 'none' }}>
-                        <IconButton color="inherit">
-                            <AccountCircleIcon />
-                        </IconButton>
-                    </Link>
-                </Toolbar>
-            </AppBar>
+            <Header/>
             <br />
             <Box display="flex" flexDirection="column" alignItems="center" gap={3}>
                 <Avatar

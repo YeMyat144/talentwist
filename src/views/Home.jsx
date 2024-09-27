@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { IconButton, AppBar, Toolbar, Typography, TextField, Grid2, Card, Box, CardMedia, CardContent, Button } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import Header from '../components/Header';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import black from '../assets/wu.jpeg';
@@ -32,20 +32,7 @@ function Home({ stories, favorites, toggleFavorite }) {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
-       <Toolbar>
-        <Link to="/" style={{ color: '#fff', textDecoration: 'none', marginRight: '20px' }}>Home</Link>
-        <Link to="/favorite" style={{ color: '#fff', textDecoration: 'none', marginRight: '20px' }}>Favorite</Link>
-        <Link to="/about" style={{ color: '#fff', textDecoration: 'none', marginRight: '20px' }}>About</Link>
-        <Link to="/contact" style={{ color: '#fff', textDecoration: 'none', marginRight: 'auto' }}>Contact</Link>
-        
-        <Link to="/profile" style={{ color: '#fff', textDecoration: 'none' }}>
-          <IconButton color="inherit">
-            <AccountCircleIcon />
-          </IconButton>
-        </Link>
-       </Toolbar>
-      </AppBar>
+      <Header/>
 
       <div className={classes.searchBar}>
         <TextField
