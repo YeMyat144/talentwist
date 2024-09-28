@@ -2,7 +2,7 @@ import { colors } from "@mui/material";
 
 const styles = {
     root: {
-      backgroundColor: colors.grey[900],
+      flexGrow: 1,
     },
     searchBar: {
       margin: '20px 56px',
