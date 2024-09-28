@@ -5,7 +5,6 @@ import StoryPage from './views/StoryPage';
 import ProfilePage from './views/Profile';
 import FavoritePage from './views/FavoritePage';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
 
 function App() {
   const [favorites, setFavorites] = useState([]);
