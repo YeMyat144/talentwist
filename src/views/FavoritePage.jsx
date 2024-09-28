@@ -1,33 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { IconButton, AppBar, Toolbar, Typography, Grid2, Card, CardMedia, CardContent, Button } from '@mui/material';
-import { makeStyles } from '@mui/styles';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import black from '../assets/wu.jpeg';
 import Header from '../components/Header';
 import theme from '../components/theme';
-
-const useStyles = makeStyles({
-  root: {
-    flexGrow: 1,
-  },
-  card: {
-    width: 345,
-  },
-  media: {
-    height: 200,
-  },
-});
+import styles from '../components/style';
 
 function FavoritePage({ favorites, stories, toggleFavorite }) {
-  const classes = useStyles();
-  
   const favoriteStories = stories.filter(story => favorites.includes(story.id));
 
   return (
-    <div className={classes.root}>
+    <div style={styles.root}>
       <Header/>
-      <Typography variant="h4" gutterBottom sx={{ mt: 3, textAlign: 'center' }}>
+      <Typography variant="h4" gutterBottom sx={{ mt: 3, textAlign: 'center', color: theme.palette.text.primary }}>
         Favorite Stories
       </Typography><br />
 
@@ -35,9 +21,9 @@ function FavoritePage({ favorites, stories, toggleFavorite }) {
         {favoriteStories.length > 0 ? (
           favoriteStories.map(story => (
             <Grid2 item xs={12} sm={6} md={4} key={story.id}>
-              <Card className={classes.card}>
+              <Card style={styles.card}>
                 <CardMedia
-                  className={classes.media}
+                  style={styles.media}
                   image={black}
                   title={story.title}
                 />

@@ -2,25 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Avatar, Button, Input, AppBar, Toolbar, TextField,Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Typography, IconButton, Box } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import Header from '../components/Header';
-
-const useStyles = makeStyles({
-    root: {
-      flexGrow: 1,
-    },
-    searchBar: {
-      margin: '20px 0',
-    },
-    card: {
-      maxWidth: 345,
-    },
-    media: {
-      height: 140,
-    },
-  });
+import styles from '../components/style';
 
 function ProfilePage() {
-    const classes = useStyles();
-
     const [user, setUser] = useState({
         name: 'Name',
         email: 'Email',
@@ -74,7 +58,7 @@ function ProfilePage() {
     };
 
     return (
-        <div className={classes.root}>
+        <div style={styles.root}>
             <Header/>
             <br />
             <Box display="flex" flexDirection="column" alignItems="center" gap={3}>

@@ -3,26 +3,10 @@ import { useParams, Link } from 'react-router-dom';
 import { AppBar, Toolbar, Typography, Button, Card, CardContent, Grid2, Container, List, ListItem, IconButton, ListItemText, CircularProgress } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import { makeStyles } from '@mui/styles';
 import Header from '../components/Header';
-
-const useStyles = makeStyles({
-  root: {
-    flexGrow: 1,
-  },
-  searchBar: {
-    margin: '20px 0',
-  },
-  card: {
-    maxWidth: 345,
-  },
-  media: {
-    height: 140,
-  },
-});
+import styles from '../components/style';
 
 function StoryPage() {
-  const classes = useStyles();
   const { storyId } = useParams();
   const [currentNode, setCurrentNode] = useState(null);
   const [storyNodes, setStoryNodes] = useState([]);
@@ -551,7 +535,7 @@ function StoryPage() {
   };
 
   return (
-    <div className={classes.root}>
+    <div style={styles.root}>
       <Header/>
       <Container maxWidth="md" sx={{ mt: 5 }}>
       {currentNode ? (
