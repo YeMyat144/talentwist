@@ -30,7 +30,7 @@ function HomePage() {
       >
         <CardContent>
           <Typography variant="h3" gutterBottom align="center" color="white">
-            Welcome to StoryScape!
+            Welcome to Tale&Twist!
           </Typography>
           <Typography variant="subtitle1" align="center" color="white" gutterBottom>
             Let's dive into a world of endless adventures and create your own path.
