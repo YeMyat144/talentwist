@@ -23,7 +23,7 @@ function HomePage() {
       <Card
         sx={{
           padding: { xs: 2, sm: 4 },    // Adjust padding based on screen size
-          boxShadow: 3,
+          borderRadius: 4,               // Rounded corners
           backgroundColor: theme.palette.primary.main, // Set card background color
           width: { xs: '70%', sm: '70%', md: '50%' }, // Adjust card width for different screen sizes
         }}
