@@ -13,7 +13,7 @@ function FavoritePage({ favorites, stories, toggleFavorite }) {
   return (
     <div style={styles.root}>
       <Header/>
-      <Typography variant="h4" gutterBottom sx={{ mt: 3, textAlign: 'center', color: theme.palette.text.primary }}>
+      <Typography variant="h4" gutterBottom sx={{ mt: 3, textAlign: 'center', color: theme.palette.secondary.main }}>
         Favorite Stories
       </Typography><br />
 

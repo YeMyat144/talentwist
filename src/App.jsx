@@ -2,6 +2,10 @@ import React, {useState, useEffect} from 'react';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './views/Home';
 import StoryPage from './views/StoryPage';
+import { UserProvider } from './components/UserContext';
+import SignUp from './views/SignUp';
+import Login from './views/Login';
+import HomePage from './views/HomePage';
 import ProfilePage from './views/Profile';
 import FavoritePage from './views/FavoritePage';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -43,7 +47,7 @@ function App() {
   return (
     <Router>
         <Routes>
-          <Route 
+          {/* <Route 
             path="/" 
             element={<Home stories={stories} favorites={favorites} toggleFavorite={toggleFavorite} />} 
           />
@@ -52,7 +56,14 @@ function App() {
           <Route 
             path="/favorite" 
             element={<FavoritePage stories={stories} favorites={favorites} toggleFavorite={toggleFavorite} />} 
-          />
+          /> */}
+          <Route path="/" element={<HomePage />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/home" element={<Home stories={stories} favorites={favorites} toggleFavorite={toggleFavorite} />} />
+          <Route path="/favorite" element={<FavoritePage stories={stories} favorites={favorites} toggleFavorite={toggleFavorite} />} />
+          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/story/:storyId" element={<StoryPage />} />
         </Routes>    
     </Router>
   );
