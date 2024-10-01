@@ -18,7 +18,7 @@ const theme = createTheme({
       secondary: "#FF4C4C", // Bright Red  
     },  
     error: {  
-      main: "#D32F2F", // Dark Red  
+      main: "#0000ff", // Cyan
     },  
     warning: {  
       main: "#FFA000", // Amber  

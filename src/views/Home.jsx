@@ -59,7 +59,7 @@ function Home({ stories, favorites, toggleFavorite }) {
                   </Button>
                   <IconButton onClick={() => toggleFavorite(story.id)} sx={{ marginLeft: 20 }}>
                     {favorites.includes(story.id) ? (
-                      <FavoriteIcon color="error" />
+                      <FavoriteIcon sx={{color: theme.palette.error.main}}/>
                     ) : (
                       <FavoriteBorderIcon />
                     )}

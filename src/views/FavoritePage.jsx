@@ -33,11 +33,11 @@ function FavoritePage({ favorites, stories, toggleFavorite }) {
                     {story.description}
                   </Typography>
                   <br />
-                  <Button component={Link} to={`/story/${story.id}`} variant="contained" sx={{bgcolor: theme.palette.primary.main}}>
+                  <Button component={Link} to={`/story/${story.id}`} variant="contained" sx={{bgcolor: theme.palette.secondary.main}}>
                     Read More
                   </Button>
                   <IconButton onClick={() => toggleFavorite(story.id)} sx={{ marginLeft: 20}}>
-                    <FavoriteIcon color="error" />
+                    <FavoriteIcon sx={{color: theme.palette.error.main}} />
                   </IconButton>
                 </CardContent>
               </Card>

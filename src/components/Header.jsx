@@ -1,26 +1,59 @@
 "use client";
-import { Avatar, AppBar, Toolbar, Box, IconButton } from "@mui/material";  
-import { Link } from 'react-router-dom';
+import { useState } from "react";
+import { Avatar, AppBar, Toolbar, Box, IconButton } from "@mui/material";
+import { Link, useLocation } from 'react-router-dom';
+import HomeIcon from "@mui/icons-material/Home";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 import theme from "./theme";
 
+export default function Header({ avatar }) {
+  const location = useLocation();
 
-export default function Header({avatar}) {
+  // Determine the active path
+  const currentPath = location.pathname;
+
   return (
-    <AppBar position="static" sx={{ backgroundColor: theme.palette.primary.main }}>  
-    <Toolbar>  
-      <Link to="/home" style={{ color: '#fff', textDecoration: 'none', marginRight: '20px' }}>Home</Link>  
-      <Link to="/favorite" style={{ color: '#fff', textDecoration: 'none', marginRight: '20px' }}>Favorite</Link>  
-      <Box sx={{ flexGrow: 1 }} /> 
-      <Link to="/profile" style={{ color: '#fff', textDecoration: 'none' }}>  
-        <IconButton color="inherit">  
-          {avatar ? (
-              <Avatar src={avatar} />
-            ) : (
-              <Avatar />
-          )}  
-        </IconButton>  
-      </Link>  
-    </Toolbar>  
-  </AppBar>  
+    <Box position="static">
+      <Toolbar sx={{ justifyContent: 'center' }}>
+        <Box display="flex" alignItems="center">
+          <Link to="/home" style={{ textDecoration: 'none', margin: '0 20px' }}>
+            <IconButton color="inherit">
+              <HomeIcon
+                sx={{
+                  color: currentPath === "/home" ? theme.palette.error.main : '#000',
+                }}
+              />
+            </IconButton>
+          </Link>
+          <Link to="/favorite" style={{ textDecoration: 'none', margin: '0 20px' }}>
+            <IconButton color="inherit">
+              <FavoriteIcon
+                sx={{
+                  color: currentPath === "/favorite" ? theme.palette.error.main : '#000',
+                }}
+              />
+            </IconButton>
+          </Link>
+          <Link to="/profile" style={{ textDecoration: 'none', margin: '0 20px' }}>
+            <IconButton color="inherit">
+              {avatar ? (
+                <Avatar
+                  sx={{
+                    border: currentPath === "/profile" ? `2px solid ${theme.palette.error.main}` : 'none',
+                  }}
+                  src={avatar}
+                />
+              ) : (
+                <Avatar
+                  sx={{
+                    border: currentPath === "/profile" ? `2px solid ${theme.palette.error.main}` : 'none',
+                  }}
+                />
+              )}
+            </IconButton>
+          </Link>
+        </Box>
+      </Toolbar>
+    </Box>
   );
 }
