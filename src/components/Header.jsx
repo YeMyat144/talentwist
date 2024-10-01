@@ -69,7 +69,7 @@ export default function Header({ avatar }) {
                       ? theme.palette.error.main
                       : "#000",
                     stroke: currentPath === "/profile" ? theme.palette.error.main : "none",
-                    strokeWidth: currentPath === "/profile" ? "1.5" : "0",
+                    strokeWidth: currentPath === "/profile" ? "0.5" : "0",
                     backgroundColor: "transparent", // Remove grey background
                   }}
                   src={avatar}
@@ -83,7 +83,7 @@ export default function Header({ avatar }) {
                       ? theme.palette.error.main
                       : "#000",
                     stroke: currentPath === "/profile" ? theme.palette.error.main : "none",
-                    strokeWidth: currentPath === "/profile" ? "1.5" : "0",
+                    strokeWidth: currentPath === "/profile" ? "0.5" : "0",
                     backgroundColor: "transparent", // Remove grey background
                   }}
                 >

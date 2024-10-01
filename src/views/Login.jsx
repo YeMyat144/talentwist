@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { TextField, Button, Container, Typography, Card, CardContent } from '@mui/material';
+import { TextField, Button, Box, Typography, Card, CardContent } from '@mui/material';
 import Grid from '@mui/material/Grid2';
 import { useNavigate } from 'react-router-dom';
 import theme from '../components/theme';
+import Bg from '../assets/bg.jpg';
 
 function Login() {
   const [credentials, setCredentials] = useState({ username: '', password: '' });
@@ -33,10 +34,31 @@ function Login() {
   };
 
   return (
-    <Container maxWidth="sm">
-      <Card sx={{ mt: 5, boxShadow: 3 }}>
+    <Box
+      sx={{
+        backgroundImage: `url(${Bg})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        width: '100vw',
+        height: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
+      <Card
+        sx={{
+          padding: { xs: 2, sm: 4 },
+          borderRadius: 4,
+          backgroundColor: theme.palette.primary.main,
+          width: { xs: '70%', sm: '70%', md: '50%' },
+        }}
+      >
         <CardContent>
-          <Typography variant="h4" gutterBottom sx={{color: theme.palette.primary.main}}>Login</Typography>
+          <Typography variant="h4" gutterBottom align="center" color="white">
+            Login
+          </Typography>
           <form onSubmit={handleSubmit}>
             <Grid container spacing={2}>
               <Grid item xs={12}>
@@ -46,7 +68,9 @@ function Login() {
                   fullWidth
                   value={credentials.username}
                   onChange={handleChange}
+                  color='white'
                   required
+                  InputLabelProps={{ style: { color: 'white' } }}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -58,10 +82,12 @@ function Login() {
                   value={credentials.password}
                   onChange={handleChange}
                   required
+                  color='white'
+                  InputLabelProps={{ style: { color: 'white' } }}
                 />
               </Grid>
               <Grid item xs={12}>
-                <Button type="submit" variant="contained" fullWidth sx={{bgcolor: theme.palette.secondary.main}}>
+                <Button type="submit" variant="contained" fullWidth sx={{ bgcolor: theme.palette.secondary.main }}>
                   Login
                 </Button>
               </Grid>
@@ -69,7 +95,7 @@ function Login() {
           </form>
         </CardContent>
       </Card>
-    </Container>
+    </Box>
   );
 }
 
