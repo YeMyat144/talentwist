@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { IconButton, AppBar, Toolbar, Typography, Grid2, Card, CardMedia, CardContent, Button } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import black from '../assets/wu.jpeg';
 import Header from '../components/Header';
 import theme from '../components/theme';
 import styles from '../components/style';
@@ -24,7 +23,7 @@ function FavoritePage({ favorites, stories, toggleFavorite }) {
               <Card style={styles.card}>
                 <CardMedia
                   style={styles.media}
-                  image={black}
+                  image={story.coverImage}
                   title={story.title}
                 />
                 <CardContent>
@@ -32,7 +31,7 @@ function FavoritePage({ favorites, stories, toggleFavorite }) {
                     {story.title}
                   </Typography>
                   <Typography variant="body2" color="textSecondary" component="p">
-                    A brief description of {story.title}.
+                    {story.description}
                   </Typography>
                   <br />
                   <Button component={Link} to={`/story/${story.id}`} variant="contained" sx={{bgcolor: theme.palette.primary.main}}>

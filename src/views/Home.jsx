@@ -5,7 +5,6 @@ import { IconButton, TextField, Grid2, Card, CardMedia, CardContent, Button, Typ
 import Header from '../components/Header';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import black from '../assets/wu.jpeg';
 import theme from '../components/theme';
 import styles from '../components/style';
 
@@ -37,7 +36,7 @@ function Home({ stories, favorites, toggleFavorite }) {
             <Card sx={{ ...styles.card, bgcolor: theme.palette.text.main }}>
               <CardMedia
                 sx={{ ...styles.media }}
-                image={black}
+                image={story.coverImage}
                 title={story.title}
               />
               <CardContent>
@@ -45,7 +44,7 @@ function Home({ stories, favorites, toggleFavorite }) {
                   {story.title}
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
-                  A brief description of {story.title}.
+                  {story.description}
                 </Typography>
                 <br />
                 <Box display="flex" alignItems="center">
