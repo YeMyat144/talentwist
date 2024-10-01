@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Box } from '@mui/material';
 import { IconButton, TextField, Grid2, Card, CardMedia, CardContent, Button, Typography } from '@mui/material';
-import Header from '../components/Header';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import theme from '../components/theme';
@@ -17,7 +16,6 @@ function Home({ stories, favorites, toggleFavorite }) {
 
   return (
     <div style={styles.root}>
-      <Header />
 
       <div style={styles.searchBar}>
         <TextField
@@ -43,6 +41,9 @@ function Home({ stories, favorites, toggleFavorite }) {
                 <Typography gutterBottom variant="h5" component="h2">
                   {story.title}
                 </Typography>
+                <Typography variant="body2" component="h3">
+                  Genre: {story.category}
+                </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
                   {story.description}
                 </Typography>
@@ -52,7 +53,7 @@ function Home({ stories, favorites, toggleFavorite }) {
                     component={Link}
                     to={`/Story/${story.id}`}
                     variant="contained"
-                    sx={{ bgcolor: theme.palette.primary.main }}
+                    sx={{ bgcolor: theme.palette.secondary.main }}
                   >
                     Read More
                   </Button>

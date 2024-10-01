@@ -3,7 +3,6 @@ import { useParams, Link } from 'react-router-dom';
 import { AppBar, Toolbar, Typography, Button, Card, CardContent, Grid2, Container, List, ListItem, IconButton, ListItemText, CircularProgress } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import Header from '../components/Header';
 import styles from '../components/style';
 
 function StoryPage() {
@@ -536,7 +535,6 @@ function StoryPage() {
 
   return (
     <div style={styles.root}>
-      <Header/>
       <Container maxWidth="md" sx={{ mt: 5 }}>
       {currentNode ? (
         <Card sx={{ mt: 4, boxShadow: 3 }}>
@@ -563,7 +561,7 @@ function StoryPage() {
 
       {/* Return to Home Button */}
       <Grid2 container justifyContent="center" sx={{ mt: 4 }}>
-        <Button variant="contained" color="secondary" startIcon={<HomeIcon />} component={Link} to="/">
+        <Button variant="contained" color="secondary" startIcon={<HomeIcon />} component={Link} to="/home">
           Return to Home
         </Button>
       </Grid2>

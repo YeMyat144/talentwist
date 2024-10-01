@@ -9,6 +9,7 @@ import HomePage from './views/HomePage';
 import ProfilePage from './views/Profile';
 import FavoritePage from './views/FavoritePage';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Header from './components/Header';
 
 import image1 from './assets/forest.jpg';
 import image2 from './assets/haunted.jpg';
@@ -23,6 +24,7 @@ import image10 from './assets/cottage.jpg';
 
 function App() {
   const [favorites, setFavorites] = useState([]);
+  const [avatar, setAvatar] = useState(null);
 
   const toggleFavorite = (id) => {
     setFavorites((prevFavorites) =>
@@ -31,6 +33,7 @@ function App() {
         : [...prevFavorites, id]
     );
   };
+  
 
   const stories = [
     {
@@ -108,6 +111,11 @@ function App() {
   useEffect(() => {
     const savedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
     setFavorites(savedFavorites);
+
+    const savedAvatar = localStorage.getItem('userAvatar');
+    if (savedAvatar) {
+      setAvatar(savedAvatar);
+    }
   }, []);
 
   // Save favorites to localStorage whenever they change
@@ -115,25 +123,23 @@ function App() {
     localStorage.setItem('favorites', JSON.stringify(favorites));
   }, [favorites]);
   
+  useEffect(() => {
+    if (avatar) {
+      localStorage.setItem('userAvatar', avatar);
+    }
+  }, [avatar]);
+
   return (
     <Router>
-        <Routes>
-          {/* <Route 
-            path="/" 
-            element={<Home stories={stories} favorites={favorites} toggleFavorite={toggleFavorite} />} 
-          />
-          <Route path="/story/:storyId" element={<StoryPage />} />
-          <Route path="/profile" element={<ProfilePage />} />
-          <Route 
-            path="/favorite" 
-            element={<FavoritePage stories={stories} favorites={favorites} toggleFavorite={toggleFavorite} />} 
-          /> */}
+      <Header avatar={avatar} />
+        <Routes> 
           <Route path="/" element={<HomePage />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
           <Route path="/home" element={<Home stories={stories} favorites={favorites} toggleFavorite={toggleFavorite} />} />
           <Route path="/favorite" element={<FavoritePage stories={stories} favorites={favorites} toggleFavorite={toggleFavorite} />} />
-          <Route path="/profile" element={<ProfilePage />} />
+          {/* <Route path="/profile" element={<ProfilePage />} /> */}
+          <Route path="/profile" element={<ProfilePage setAvatar={setAvatar} />} />
           <Route path="/story/:storyId" element={<StoryPage />} />
         </Routes>    
     </Router>
