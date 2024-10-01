@@ -4,11 +4,29 @@ import { AppBar, Toolbar, Typography, Button, Card, CardContent, Grid2, Containe
 import HomeIcon from '@mui/icons-material/Home';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import styles from '../components/style';
+import Header from '../components/Header';
 
 function StoryPage() {
   const { storyId } = useParams();
   const [currentNode, setCurrentNode] = useState(null);
   const [storyNodes, setStoryNodes] = useState([]);
+  const [avatar, setAvatar] = useState(null);
+
+  useEffect(() => {
+    const savedAvatar = localStorage.getItem('userAvatar');
+    if (savedAvatar) {
+      setAvatar(savedAvatar);
+    }
+  }, []);
+
+  // Save favorites to localStorage whenever they change
+  
+  useEffect(() => {
+    if (avatar) {
+      localStorage.setItem('userAvatar', avatar);
+    }
+  }, [avatar]);
+
 
   useEffect(() => {
     const stories = {
@@ -535,6 +553,7 @@ function StoryPage() {
 
   return (
     <div style={styles.root}>
+      <Header avatar={avatar} />
       <Container maxWidth="md" sx={{ mt: 5 }}>
       {currentNode ? (
         <Card sx={{ mt: 4, boxShadow: 3 }}>

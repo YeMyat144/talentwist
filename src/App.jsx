@@ -112,10 +112,6 @@ function App() {
     const savedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
     setFavorites(savedFavorites);
 
-    const savedAvatar = localStorage.getItem('userAvatar');
-    if (savedAvatar) {
-      setAvatar(savedAvatar);
-    }
   }, []);
 
   // Save favorites to localStorage whenever they change
@@ -123,15 +119,8 @@ function App() {
     localStorage.setItem('favorites', JSON.stringify(favorites));
   }, [favorites]);
   
-  useEffect(() => {
-    if (avatar) {
-      localStorage.setItem('userAvatar', avatar);
-    }
-  }, [avatar]);
-
   return (
     <Router>
-      <Header avatar={avatar} />
         <Routes> 
           <Route path="/" element={<HomePage />} />
           <Route path="/signup" element={<SignUp />} />

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { TextField, Button, Container, Typography, Card, CardContent } from '@mui/material';
 import Grid from '@mui/material/Grid2';
 import { useNavigate } from 'react-router-dom';
+import theme from '../components/theme';
 
 function SignUp() {
   const [userDetails, setUserDetails] = useState({ username: '', password: '' });
@@ -25,7 +26,7 @@ function SignUp() {
     <Container maxWidth="sm">
       <Card sx={{ mt: 5, boxShadow: 3 }}>
         <CardContent>
-          <Typography variant="h4" gutterBottom>Sign Up</Typography>
+          <Typography variant="h4" gutterBottom sx={{color: theme.palette.primary.main}}>Sign Up</Typography>
           <form onSubmit={handleSubmit}>
             <Grid container spacing={2}>
               <Grid item xs={12}>
@@ -50,7 +51,7 @@ function SignUp() {
                 />
               </Grid>
               <Grid item xs={12}>
-                <Button type="submit" variant="contained" color="primary" fullWidth>
+                <Button type="submit" variant="contained" sx={{bgcolor: theme.palette.secondary.main}} fullWidth>
                   Sign Up
                 </Button>
               </Grid>

@@ -4,16 +4,17 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import styles from '../components/style';
 import theme from '../components/theme';
+import Header from '../components/Header';
 
-function ProfilePage({ setAvatar }) {
+function ProfilePage() {
   const [user, setUser] = useState({
     name: 'Name',
     email: 'Email',
-    birthDate: 'Birth Date',  // Add birthDate to the initial state
+    birthDate: 'Birth Date',
+    avatar: null,
   });
 
   const [editMode, setEditMode] = useState(false);
-  const [avatarFile, setAvatarFile] = useState(null);
 
   useEffect(() => {
     // Load user data from localStorage if available
@@ -45,7 +46,6 @@ function ProfilePage({ setAvatar }) {
           ...prevUser,
           avatar: reader.result,
         }));
-        setAvatar(reader.result); // Update avatar in App component
       };
       reader.readAsDataURL(file);
     }
@@ -56,7 +56,6 @@ function ProfilePage({ setAvatar }) {
       ...prevUser,
       avatar: null,
     }));
-    setAvatarFile(null);
   };
 
   const handleSubmit = (e) => {
@@ -67,6 +66,8 @@ function ProfilePage({ setAvatar }) {
 
   return (
     <div style={styles.root}>
+      {/* Pass user.avatar instead of undefined avatar */}
+      <Header avatar={user.avatar} />
       <Box display="flex" justifyContent="center" alignItems="center" mt={5}>
         <Card className={styles.root}>
           <CardContent>
@@ -118,7 +119,7 @@ function ProfilePage({ setAvatar }) {
                   onChange={handleFileChange}
                   sx={{ mb: 2 }}
                 />
-                <Button variant="contained" type="submit" fullWidth sx={{bgcolor: theme.palette.secondary.main}}> 
+                <Button variant="contained" type="submit" fullWidth sx={{ bgcolor: theme.palette.secondary.main }}>
                   Save
                 </Button>
               </Box>

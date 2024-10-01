@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Box } from '@mui/material';
 import { IconButton, TextField, Grid2, Card, CardMedia, CardContent, Button, Typography } from '@mui/material';
@@ -6,17 +6,35 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import theme from '../components/theme';
 import styles from '../components/style';
+import Header from '../components/Header';
 
 function Home({ stories, favorites, toggleFavorite }) {
   const [searchQuery, setSearchQuery] = useState('');
+  
 
   const filteredStories = stories.filter(story =>
     story.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
+  const [avatar, setAvatar] = useState(null);
+
+  useEffect(() => {
+    const savedAvatar = localStorage.getItem('userAvatar');
+    if (savedAvatar) {
+      setAvatar(savedAvatar);
+    }
+  }, []);
+
+  // Save favorites to localStorage whenever they change
+  
+  useEffect(() => {
+    if (avatar) {
+      localStorage.setItem('userAvatar', avatar);
+    }
+  }, [avatar]);
 
   return (
     <div style={styles.root}>
-
+     <Header avatar={avatar} />
       <div style={styles.searchBar}>
         <TextField
           fullWidth
