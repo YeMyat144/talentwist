@@ -63,17 +63,28 @@ export default function Header({ avatar }) {
               {avatar ? (
                 <Avatar
                   sx={{
-                    border: currentPath === "/profile" ? `2px solid ${theme.palette.error.main}` : "none",
-                    bgcolor: clickedIcons.profile ? theme.palette.primary.main : "inherit",
+                    color: clickedIcons.profile
+                      ? theme.palette.primary.main
+                      : currentPath === "/profile"
+                      ? theme.palette.error.main
+                      : "#000",
+                    stroke: currentPath === "/profile" ? theme.palette.error.main : "none",
+                    strokeWidth: currentPath === "/profile" ? "1.5" : "0",
+                    backgroundColor: "transparent", // Remove grey background
                   }}
                   src={avatar}
                 />
               ) : (
                 <Avatar
                   sx={{
-                    border: currentPath === "/profile" ? `2px solid ${theme.palette.error.main}` : "none",
-                    bgcolor: clickedIcons.profile ? theme.palette.primary.main : theme.palette.grey[300],
-                    color: "#000",
+                    color: clickedIcons.profile
+                      ? theme.palette.primary.main
+                      : currentPath === "/profile"
+                      ? theme.palette.error.main
+                      : "#000",
+                    stroke: currentPath === "/profile" ? theme.palette.error.main : "none",
+                    strokeWidth: currentPath === "/profile" ? "1.5" : "0",
+                    backgroundColor: "transparent", // Remove grey background
                   }}
                 >
                   <PersonIcon />
