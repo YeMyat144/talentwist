@@ -4,6 +4,7 @@ import { Avatar, AppBar, Toolbar, Box, IconButton } from "@mui/material";
 import { Link, useLocation } from 'react-router-dom';
 import HomeIcon from "@mui/icons-material/Home";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import PersonIcon from "@mui/icons-material/Person"; // Import default icon for Avatar
 import theme from "./theme";
 
 export default function Header({ avatar }) {
@@ -71,9 +72,12 @@ export default function Header({ avatar }) {
                 <Avatar
                   sx={{
                     border: currentPath === "/profile" ? `2px solid ${theme.palette.error.main}` : "none",
-                    bgcolor: clickedIcons.profile ? theme.palette.primary.main : "inherit",
+                    bgcolor: clickedIcons.profile ? theme.palette.primary.main : theme.palette.grey[300],
+                    color: "#000",
                   }}
-                />
+                >
+                  <PersonIcon />
+                </Avatar>
               )}
             </IconButton>
           </Link>
