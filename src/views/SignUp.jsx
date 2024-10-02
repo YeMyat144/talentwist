@@ -42,7 +42,7 @@ function SignUp() {
           padding: { xs: 2, sm: 4 },
           borderRadius: 4,
           backgroundColor: theme.palette.primary.main,
-          width: { xs: '70%', sm: '70%', md: '50%' },
+          width: '50vh',
         }}
       >
         <CardContent>
@@ -50,38 +50,32 @@ function SignUp() {
             Sign Up
           </Typography>
           <form onSubmit={handleSubmit}>
-            <Grid container spacing={2}>
-              <Grid item xs={12}>
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
                 <TextField
                   name="username"
                   label="Username"
                   fullWidth
+                  sx={{bgcolor:'white'}}
                   value={userDetails.username}
                   onChange={handleChange}
-                  color='white'
+                  color='black'
                   required
-                  InputLabelProps={{ style: { color: 'white' } }}
                 />
-              </Grid>
-              <Grid item xs={12}>
                 <TextField
                   name="password"
                   label="Password"
                   type="password"
                   fullWidth
-                  color='white'
+                  sx={{bgcolor:'white'}}
+                  color='black'
                   value={userDetails.password}
                   onChange={handleChange}
                   required
-                  InputLabelProps={{ style: { color: 'white' } }}
                 />
-              </Grid>
-              <Grid item xs={12}>
                 <Button type="submit" variant="contained" fullWidth sx={{ bgcolor: theme.palette.secondary.main }}>
                   Sign Up
                 </Button>
-              </Grid>
-            </Grid>
+            </Box>
           </form>
         </CardContent>
       </Card>
