@@ -41,14 +41,14 @@ function Home({ stories, favorites, toggleFavorite }) {
           label="Search stories..."
           variant="outlined"
           value={searchQuery}
-          sx={{ bgcolor: theme.palette.text.primary }}
+          sx={{ bgcolor: theme.palette.text.primary, justifyContent: 'center', alignItems: 'center' }}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
       </div>
 
-      <Grid2 container sx={{ ml: 7 }} spacing={4}>
+      <Grid2 container sx={{ justifyContent: 'center', alignItems: 'center' }} spacing={4}>
         {filteredStories.slice(0, 9).map(story => (
-          <Grid2 item xs={12} sm={6} md={4} key={story.id}>
+          <Grid2 item key={story.id}>
             <Card sx={{ ...styles.card, bgcolor: theme.palette.text.main }}>
               <CardMedia
                 sx={{ ...styles.media }}

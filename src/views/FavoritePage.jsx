@@ -32,7 +32,7 @@ function FavoritePage({ favorites, stories, toggleFavorite }) {
         Favorite Stories
       </Typography><br />
 
-      <Grid2 container sx={{ ml: 7 }} spacing={4}>
+      <Grid2 container sx={{ justifyContent: 'center', alignItems: 'center' }} spacing={4}>
         {favoriteStories.length > 0 ? (
           favoriteStories.map(story => (
             <Grid2 item xs={12} sm={6} md={4} key={story.id}>

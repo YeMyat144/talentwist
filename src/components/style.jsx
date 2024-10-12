@@ -8,7 +8,7 @@ const styles = {
       margin: '20px 56px',
     },
     card: {
-      width: 345,
+      width: 354,
     },
     media: {
       height: 200,
