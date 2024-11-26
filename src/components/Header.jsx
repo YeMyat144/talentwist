@@ -1,14 +1,14 @@
 "use client";
 import { useState } from "react";
-import { Avatar, AppBar, Toolbar, Box, IconButton } from "@mui/material";
-import { Link, useLocation } from 'react-router-dom';
+import { Avatar, AppBar, Toolbar, Box, IconButton, useTheme } from "@mui/material";
+import { Link, useLocation } from "react-router-dom";
 import HomeIcon from "@mui/icons-material/Home";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import PersonIcon from "@mui/icons-material/Person"; // Import default icon for Avatar
-import theme from "./theme";
+import PersonIcon from "@mui/icons-material/Person";
 
 export default function Header({ avatar }) {
   const location = useLocation();
+  const theme = useTheme();
   const [clickedIcons, setClickedIcons] = useState({});
 
   // Determine the active path
@@ -23,68 +23,78 @@ export default function Header({ avatar }) {
   };
 
   return (
-    <Box position="static">
-      <Toolbar sx={{ justifyContent: 'center' }}>
-        <Box display="flex" alignItems="center">
-          <Link to="/home" style={{ textDecoration: 'none', margin: '0 20px' }}>
-            <IconButton color="inherit" onClick={() => handleIconClick('home')}>
-              <HomeIcon
-                sx={{
-                  color: clickedIcons.home
-                    ? theme.palette.primary.main
-                    : currentPath === "/home"
-                    ? theme.palette.error.main
-                    : "#000",
-                  stroke: currentPath === "/home" ? theme.palette.error.main : "none",
-                  strokeWidth: currentPath === "/home" ? "1.5" : "0",
-                }}
-              />
+    <AppBar position="static" sx={{ backgroundColor: theme.palette.background.paper, boxShadow: 3 }}>
+      <Toolbar sx={{ justifyContent: "space-around", px: 3 }}>
+        {/* Home Icon */}
+        <Box>
+          <Link to="/home" style={{ textDecoration: "none" }}>
+            <IconButton
+              onClick={() => handleIconClick("home")}
+              sx={{
+                color: currentPath === "/home" ? theme.palette.primary.main : theme.palette.text.primary,
+                "&:hover": {
+                  color: theme.palette.primary.dark,
+                  transform: "scale(1.1)",
+                  transition: "all 0.3s ease-in-out",
+                },
+              }}
+            >
+              <HomeIcon fontSize="large" />
             </IconButton>
           </Link>
+        </Box>
 
-          <Link to="/favorite" style={{ textDecoration: 'none', margin: '0 20px' }}>
-            <IconButton color="inherit" onClick={() => handleIconClick('favorite')}>
-              <FavoriteIcon
-                sx={{
-                  color: clickedIcons.favorite
-                    ? theme.palette.primary.main
-                    : currentPath === "/favorite"
-                    ? theme.palette.error.main
-                    : "#000",
-                  stroke: currentPath === "/favorite" ? theme.palette.error.main : "none",
-                  strokeWidth: currentPath === "/favorite" ? "1.5" : "0",
-                }}
-              />
+        {/* Favorite Icon */}
+        <Box>
+          <Link to="/favorite" style={{ textDecoration: "none" }}>
+            <IconButton
+              onClick={() => handleIconClick("favorite")}
+              sx={{
+                color: currentPath === "/favorite" ? theme.palette.primary.main : theme.palette.text.primary,
+                "&:hover": {
+                  color: theme.palette.primary.dark,
+                  transform: "scale(1.1)",
+                  transition: "all 0.3s ease-in-out",
+                },
+              }}
+            >
+              <FavoriteIcon fontSize="large" />
             </IconButton>
           </Link>
+        </Box>
 
-          <Link to="/profile" style={{ textDecoration: 'none', margin: '0 20px' }}>
-            <IconButton color="inherit" onClick={() => handleIconClick('profile')}>
+        {/* Profile Icon */}
+        <Box>
+          <Link to="/profile" style={{ textDecoration: "none" }}>
+            <IconButton
+              onClick={() => handleIconClick("profile")}
+              sx={{
+                color: currentPath === "/profile" ? theme.palette.primary.main : theme.palette.text.primary,
+                "&:hover": {
+                  color: theme.palette.primary.dark,
+                  transform: "scale(1.1)",
+                  transition: "all 0.3s ease-in-out",
+                },
+              }}
+            >
               {avatar ? (
                 <Avatar
-                  sx={{
-                    color: clickedIcons.profile
-                      ? theme.palette.primary.main
-                      : currentPath === "/profile"
-                      ? theme.palette.error.main
-                      : "#000",
-                    stroke: currentPath === "/profile" ? theme.palette.error.main : "none",
-                    strokeWidth: currentPath === "/profile" ? "0.5" : "0",
-                    backgroundColor: "transparent", // Remove grey background
-                  }}
                   src={avatar}
+                  alt="User Avatar"
+                  sx={{
+                    width: 40,
+                    height: 40,
+                    border: currentPath === "/profile" ? `2px solid ${theme.palette.primary.main}` : "none",
+                  }}
                 />
               ) : (
                 <Avatar
                   sx={{
-                    color: clickedIcons.profile
-                      ? theme.palette.primary.main
-                      : currentPath === "/profile"
-                      ? theme.palette.error.main
-                      : "#000",
-                    stroke: currentPath === "/profile" ? theme.palette.error.main : "none",
-                    strokeWidth: currentPath === "/profile" ? "0.5" : "0",
-                    backgroundColor: "transparent", // Remove grey background
+                    width: 40,
+                    height: 40,
+                    bgcolor: theme.palette.background.default,
+                    color: theme.palette.text.primary,
+                    border: currentPath === "/profile" ? `2px solid ${theme.palette.primary.main}` : "none",
                   }}
                 >
                   <PersonIcon />
@@ -94,6 +104,6 @@ export default function Header({ avatar }) {
           </Link>
         </Box>
       </Toolbar>
-    </Box>
+    </AppBar>
   );
 }

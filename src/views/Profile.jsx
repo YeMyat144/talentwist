@@ -1,23 +1,51 @@
 import React, { useState, useEffect } from 'react';
-import { Avatar, Button, IconButton, Input, AppBar, Toolbar, TextField, Card, CardContent, CardActions, Typography, Box } from '@mui/material';
-import DeleteIcon from '@mui/icons-material/Delete';
-import EditIcon from '@mui/icons-material/Edit';
-import styles from '../components/style';
-import theme from '../components/theme';
+import {
+  Avatar,
+  Button,
+  TextField,
+  Card,
+  CardContent,
+  Typography,
+  Box,
+  IconButton,
+  Fade,
+} from '@mui/material';
+import { Edit, Save, Cancel } from '@mui/icons-material';
+import { styled } from '@mui/material/styles';
 import Header from '../components/Header';
+
+const ProfileCard = styled(Card)(({ theme }) => ({
+  maxWidth: 600,
+  margin: 'auto',
+  marginTop: theme.spacing(4),
+  padding: theme.spacing(3),
+  backgroundColor: theme.palette.background.paper,
+  borderRadius: 12,
+  boxShadow: '0 8px 24px rgba(0,0,0,0.12)',
+}));
+
+const AvatarWrapper = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  justifyContent: 'center',
+  marginBottom: theme.spacing(3),
+}));
+
+const LargeAvatar = styled(Avatar)(({ theme }) => ({
+  width: theme.spacing(16),
+  height: theme.spacing(16),
+  boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
+}));
 
 function ProfilePage() {
   const [user, setUser] = useState({
-    name: 'Name',
-    email: 'Email',
-    birthDate: 'Birth Date',
+    name: 'John Doe',
+    email: 'john.doe@example.com',
     avatar: null,
   });
 
   const [editMode, setEditMode] = useState(false);
 
   useEffect(() => {
-    // Load user data from localStorage if available
     const storedUser = JSON.parse(localStorage.getItem('userProfile'));
     if (storedUser) {
       setUser(storedUser);
@@ -25,7 +53,6 @@ function ProfilePage() {
   }, []);
 
   useEffect(() => {
-    // Save user data to localStorage whenever it changes
     localStorage.setItem('userProfile', JSON.stringify(user));
   }, [user]);
 
@@ -51,95 +78,91 @@ function ProfilePage() {
     }
   };
 
-  const handleRemoveAvatar = () => {
-    setUser((prevUser) => ({
-      ...prevUser,
-      avatar: null,
-    }));
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Updated User Info:', user);
     setEditMode(false);
   };
 
   return (
-    <div style={styles.root}>
-      {/* Pass user.avatar instead of undefined avatar */}
-      <Header avatar={user.avatar} />
-      <Box display="flex" justifyContent="center" alignItems="center" mt={5}>
-        <Card className={styles.root}>
-          <CardContent>
-            <Box className={styles.avatarContainer} display="flex" justifyContent="center" alignItems="center">
-              <Avatar
-                alt={user.name}
-                src={user.avatar}
-                sx={{ width: 150, height: 150 }}
-              />
-              {user.avatar && (
-                <IconButton className={styles.removeButton} onClick={handleRemoveAvatar}>
-                  <DeleteIcon />
-                </IconButton>
-              )}
+    <>
+    <Header/>
+    <ProfileCard>
+      <CardContent>
+        <AvatarWrapper>
+          <LargeAvatar alt={user.name} src={user.avatar} />
+        </AvatarWrapper>
+
+        <Typography variant="h4" align="center" gutterBottom>
+          {user.name}
+        </Typography>
+        <Typography variant="subtitle1" align="center" color="textSecondary" gutterBottom>
+          {user.email}
+        </Typography>
+
+        <Fade in={editMode}>
+          <Box component="form" onSubmit={handleSubmit} sx={{ mt: 3 }}>
+            <TextField
+              fullWidth
+              label="Name"
+              name="name"
+              value={user.name}
+              onChange={handleInputChange}
+              margin="normal"
+            />
+            <TextField
+              fullWidth
+              label="Email"
+              name="email"
+              value={user.email}
+              onChange={handleInputChange}
+              margin="normal"
+            />
+
+            <Button
+              variant="contained"
+              component="label"
+              fullWidth
+              sx={{ mt: 2, mb: 2 }}
+            >
+              Upload Avatar
+              <input type="file" hidden accept="image/*" onChange={handleFileChange} />
+            </Button>
+
+            <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: 2 }}>
+              <Button
+                onClick={() => setEditMode(false)}
+                startIcon={<Cancel />}
+                sx={{ mr: 1 }}
+              >
+                Cancel
+              </Button>
+              <Button
+                type="submit"
+                variant="contained"
+                startIcon={<Save />}
+              >
+                Save
+              </Button>
             </Box>
+          </Box>
+        </Fade>
 
-            <Typography variant="h5" align="center" gutterBottom>
-              {user.name}
-            </Typography>
-            <Typography variant="subtitle1" align="center" color="textSecondary" gutterBottom>
-              {user.email}
-            </Typography>
-
-            {editMode && (
-              <Box component="form" onSubmit={handleSubmit} sx={{ mt: 3 }}>
-                <TextField
-                  fullWidth
-                  label="Name"
-                  name="name"
-                  value={user.name}
-                  onChange={handleInputChange}
-                  sx={{ mb: 2 }}
-                />
-                <TextField
-                  fullWidth
-                  label="Email"
-                  name="email"
-                  value={user.email}
-                  onChange={handleInputChange}
-                  sx={{ mb: 2 }}
-                />
-
-                <Typography variant="body1" sx={{ mb: 2 }}>
-                  Upload Avatar:
-                </Typography>
-                <Input
-                  type="file"
-                  accept="image/*"
-                  onChange={handleFileChange}
-                  sx={{ mb: 2 }}
-                />
-                <Button variant="contained" type="submit" fullWidth sx={{ bgcolor: theme.palette.secondary.main }}>
-                  Save
-                </Button>
-              </Box>
-            )}
-          </CardContent>
-
-          <CardActions sx={{ justifyContent: 'center' }}>
+        {!editMode && (
+          <Box sx={{ display: 'flex', justifyContent: 'center', mt: 3 }}>
             <Button
               variant="outlined"
-              sx={{ borderColor: theme.palette.secondary.main, color: theme.palette.secondary.main }}
-              onClick={() => setEditMode(!editMode)}
-              startIcon={editMode ? <DeleteIcon /> : <EditIcon />}
+              onClick={() => setEditMode(true)}
+              startIcon={<Edit />}
             >
-              {editMode ? 'Cancel' : 'Edit Profile'}
+              Edit Profile
             </Button>
-          </CardActions>
-        </Card>
-      </Box>
-    </div>
+          </Box>
+        )}
+      </CardContent>
+    </ProfileCard>
+    </>
   );
 }
 
 export default ProfilePage;
+

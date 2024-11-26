@@ -1,38 +1,72 @@
-"use client";  
-import { createTheme } from "@mui/material/styles";  
+import { createTheme } from '@mui/material/styles';
 
-const theme = createTheme({  
-  palette: {  
-    primary: {  
-      main: "#000435",
-    },  
-    secondary: {  
-      main: "#0A2472", 
-    },  
-    background: {  
-      default: "#1A1A1A", // Very Dark Gray  
-      paper: "#2A2A2A", // Dark Gray  
-    },  
-    text: {  
-      primary: "#FFFFFF", // White  
-      secondary: "#FF4C4C", // Bright Red  
-    },  
-    error: {  
-      main: "#0000ff", // Cyan
-    },  
-    warning: {  
-      main: "#FFA000", // Amber  
-    },  
-    info: {  
-      main: "#B0BEC5", // Light Grey  
-    },  
-    success: {  
-      main: "#4CAF50", // Green  
-    },  
-    disabled: {  
-      main: "#8D8D8D", // Grey  
-    },  
-  },  
-});  
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#1976d2',
+      light: '#42a5f5',
+      dark: '#1565c0',
+    },
+    secondary: {
+      main: '#ff4081',
+      light: '#ff80ab',
+      dark: '#c51162',
+    },
+    background: {
+      default: '#f5f5f5',
+      paper: '#ffffff',
+    },
+    text: {
+      primary: '#333333',
+      secondary: '#757575',
+    },
+  },
+  typography: {
+    fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+    h1: {
+      fontSize: '2.5rem',
+      fontWeight: 500,
+    },
+    h2: {
+      fontSize: '2rem',
+      fontWeight: 500,
+    },
+    h3: {
+      fontSize: '1.75rem',
+      fontWeight: 500,
+    },
+    h4: {
+      fontSize: '1.5rem',
+      fontWeight: 500,
+    },
+    h5: {
+      fontSize: '1.25rem',
+      fontWeight: 500,
+    },
+    h6: {
+      fontSize: '1rem',
+      fontWeight: 500,
+    },
+  },
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          textTransform: 'none',
+          borderRadius: 8,
+        },
+      },
+    },
+    MuiCard: {
+      styleOverrides: {
+        root: {
+          borderRadius: 12,
+          boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
+        },
+      },
+    },
+  },
+});
 
 export default theme;
+

@@ -1,56 +1,68 @@
 import React from 'react';
 import { Box, Button, Typography, Card, CardContent } from '@mui/material';
-import Grid from '@mui/material/Grid2';
+import { Link } from 'react-router-dom';
+import { styled } from '@mui/material/styles';
 import Bg from '../assets/bg.jpg';
-import theme from '../components/theme';
-import {Link} from 'react-router-dom';
+
+const StyledCard = styled(Card)(({ theme }) => ({
+  maxWidth: 600,
+  margin: 'auto',
+  marginTop: theme.spacing(8),
+  padding: theme.spacing(4),
+  backgroundColor: theme.palette.background.paper,
+  borderRadius: 12,
+  boxShadow: '0 8px 24px rgba(0,0,0,0.12)',
+}));
+
+const ButtonContainer = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  justifyContent: 'center',
+  gap: theme.spacing(2),
+  marginTop: theme.spacing(3),
+}));
 
 function HomePage() {
   return (
     <Box
       sx={{
-        backgroundImage: `url(${Bg})`,
-        backgroundSize: 'cover',        // Makes the background cover the entire screen
-        backgroundPosition: 'center',   // Centers the background image
-        backgroundRepeat: 'no-repeat',  // Prevents the image from repeating
-        width: '100vw',                 // Full viewport width
-        height: '100vh',                // Full viewport height
+        minHeight: '100vh',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
+        backgroundImage: `url(${Bg})`,
       }}
     >
-      <Card
-        sx={{
-          padding: { xs: 2, sm: 4 },    // Adjust padding based on screen size
-          borderRadius: 4,               // Rounded corners
-          backgroundColor: theme.palette.primary.main, // Set card background color
-          width: { xs: '70%', sm: '70%', md: '50%' }, // Adjust card width for different screen sizes
-        }}
-      >
+      <StyledCard >
         <CardContent>
-          <Typography variant="h3" gutterBottom align="center" color="white">
+          <Typography variant="h3" gutterBottom align="center" color="primary">
             Welcome to Tale&Twist!
           </Typography>
-          <Typography variant="subtitle1" align="center" color="white" gutterBottom>
-            Let's dive into a world of endless adventures and create your own path.
+          <Typography variant="subtitle1" align="center" color="textSecondary" paragraph>
+            Dive into a world of endless adventures and create your own path.
           </Typography>
-          <Grid container spacing={2} justifyContent="center" sx={{ mt: 2 }}>
-            <Grid item>
-              <Button variant="contained" component={Link} to='signup' color="primary" sx={{ minWidth: 120 }}>
-                Sign Up
-              </Button>
-            </Grid>
-            <Grid item>
-              <Button variant="contained" component={Link} to='/login' color="secondary" sx={{ minWidth: 120 }}>
-                Login
-              </Button>
-            </Grid>
-          </Grid>
+          <ButtonContainer>
+            <Button
+              variant="contained"
+              component={Link}
+              to="/signup"
+              size="large"
+            >
+              Sign Up
+            </Button>
+            <Button
+              variant="outlined"
+              component={Link}
+              to="/login"
+              size="large"
+            >
+              Login
+            </Button>
+          </ButtonContainer>
         </CardContent>
-      </Card>
+      </StyledCard>
     </Box>
   );
 }
 
 export default HomePage;
+
